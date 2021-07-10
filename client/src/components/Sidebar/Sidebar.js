@@ -6,10 +6,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Badge from "@material-ui/core/Badge";
+import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SettingsIcon from "@material-ui/icons/Settings";
+import GroupIcon from "@material-ui/icons/Group";
+import MessageIcon from "@material-ui/icons/Message";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -56,7 +60,7 @@ const Sidebar = (props) => {
         <Link to="/">
           <ListItem button>
             <ListItemIcon>
-              <DashboardIcon />
+              <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItem>
@@ -68,6 +72,42 @@ const Sidebar = (props) => {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary="Messages" />
+          </ListItem>
+        </Link>
+
+        <Link to="/contacts">
+          <ListItem button>
+            <ListItemIcon>
+              <GroupIcon />
+            </ListItemIcon>
+            <ListItemText primary="Contacts" />
+          </ListItem>
+        </Link>
+
+        <Link to="/campaigns">
+          <ListItem button>
+            <ListItemIcon>
+              <MessageIcon />
+            </ListItemIcon>
+            <ListItemText primary="Campaigns" />
+          </ListItem>
+        </Link>
+
+        <Link to="/templates">
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Templates" />
+          </ListItem>
+        </Link>
+
+        <Link to="/integrations">
+          <ListItem button>
+            <ListItemIcon>
+              <AutorenewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Integrations" />
           </ListItem>
         </Link>
 

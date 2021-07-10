@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 
@@ -42,7 +42,7 @@ class MainLayout extends Component {
   render() {
     const { classes, children } = this.props;
     return (
-      <Fragment>
+      <>
         <div className={classes.root}>
           <Header
             handleToggleDrawer={this.handleToggleDrawer}
@@ -56,7 +56,7 @@ class MainLayout extends Component {
           </main>
         </div>
         <Sidebar open={this.state.open} drawerWidth={drawerWidth} />
-      </Fragment>
+      </>
     );
   }
 }

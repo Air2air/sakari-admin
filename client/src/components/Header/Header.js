@@ -6,7 +6,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/Person";
 import { withStyles } from "@material-ui/core/styles";
 
-
 const styles = (theme) => ({
   toolbarRoot: {
     paddingRight: 24,
@@ -26,10 +25,9 @@ const styles = (theme) => ({
 const Header = (props) => {
   const { classes, handleToggleDrawer } = props;
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" elevation={0}>
       <Toolbar
         color="indigo"
-        flexGrow={1}
         disableGutters={true}
         classes={{ root: classes.toolbarRoot }}
       >

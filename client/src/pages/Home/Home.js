@@ -1,52 +1,51 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import DashCard from "../../components/DashCard";
 
-import { increment, decrement, getCounter } from "./counterReducer";
-import { useSelector, useDispatch } from "react-redux";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(4),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+}));
 
-export default function Home() {
+export default function NestedGrid() {
+  const classes = useStyles();
 
-  const counter = useSelector(getCounter);
-
-  const dispatch = useDispatch();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <Card>
-        <CardContent>
-          <Typography variant="h5">
-            Redux Example
-          </Typography>
-          <Typography
-            align="center"
-            variant="subtitle1"
-          >
-            Counter: {counter}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button color="primary" variant="contained" onClick={() => dispatch(increment())}>
-            Increment
-          </Button>
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={() => dispatch(decrement())}
-          >
-            Decrement
-          </Button>
-        </CardActions>
-      </Card>
+    <div className={classes.root}>
+      <Grid container spacing={4} >
+        <Grid item xs={6}>
+          <DashCard subtitle="MESSAGES" icon="GroupIcon" title="Send a message" explain="Message your contacts and groups" />
+        </Grid>
+        <Grid item xs={6}>
+          <DashCard subtitle="CONTACTS" title="Manage contacts" explain="Manage and group recipients" />
+        </Grid>
+        <Grid item xs={6}>
+          <DashCard subtitle="CAMPAIGNS" title="Manage campaigns" explain="Run campaigns" />
+        </Grid>
+        <Grid item xs={6}>
+          <DashCard subtitle="TEMPLATES" title="Layout designs" explain="Design and format your messages" />
+        </Grid>
+        <Grid item xs={6}>
+          <DashCard subtitle="INTEGRATIONS" title="App Integrations" explain="Connect your productivity apps" />
+        </Grid>
+        <Grid item xs={6}>
+          <DashCard subtitle="SETTINGS" title="Card1" buttonText="start" />
+        </Grid>
+      </Grid>
     </div>
   );
-};
+}
