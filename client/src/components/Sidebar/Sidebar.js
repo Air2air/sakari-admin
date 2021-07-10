@@ -6,6 +6,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Badge from "@material-ui/core/Badge";
+import SendIcon from "@material-ui/icons/Send";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -58,6 +59,15 @@ const Sidebar = (props) => {
               <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
+          </ListItem>
+        </Link>
+
+        <Link to="/messages">
+          <ListItem button>
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary="Messages" />
           </ListItem>
         </Link>
 

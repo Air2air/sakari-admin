@@ -22,7 +22,12 @@ export default function Alerts() {
       }}
     >
       <Card>
-        <CardContent>Alerts</CardContent>
+        <CardContent>
+          <Typography variant="h5">Redux Example</Typography>
+          <Typography align="center" variant="subtitle1">
+            Counter: {counter}
+          </Typography>
+        </CardContent>
         <CardActions>
           <Button
             color="primary"
