@@ -1,9 +1,9 @@
-import indigo from "@material-ui/core/colors/indigo";
+import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
 import red from "@material-ui/core/colors/red";
 import { createSlice } from '@reduxjs/toolkit';
 
-const primaryColor = indigo;
+const primaryColor = blue;
 const secondaryColor = green;
 
 const themeConfig = {
@@ -11,7 +11,7 @@ const themeConfig = {
     useNextVariants: true,
   },
   palette: {
-    primary: indigo,
+    primary: blue,
     secondary: green,
     error: red,
     // Used by `getContrastText()` to maximize the contrast between the background and

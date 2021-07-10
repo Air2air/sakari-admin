@@ -26,7 +26,7 @@ const Header = props => {
   const { classes, handleToggleDrawer } = props;
   return (
     <AppBar position="fixed">
-      <Toolbar disableGutters={true} classes={{ root: classes.toolbarRoot }}>
+      <Toolbar color="indigo" disableGutters={true} classes={{ root: classes.toolbarRoot }}>
         <IconButton
           color="inherit"
           aria-label="Open drawer"
