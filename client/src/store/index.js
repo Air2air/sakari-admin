@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import settings from "../containers/Setting/settingsReducer";
-import counter from "../containers/Home/counterReducer"
+import counter from "../pages/Home/counterReducer"
+import alerts from "../pages/Alerts/alertsReducer";
+import settings from "../pages/Setting/settingsReducer";
+
+
 
 export default configureStore({
   reducer: {
+    alerts: alerts,
     settings: settings,
     counter: counter,
   },

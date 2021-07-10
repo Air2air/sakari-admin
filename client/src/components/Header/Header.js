@@ -2,31 +2,37 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import PersonIcon from "@material-ui/icons/Person";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
+
+const styles = (theme) => ({
   toolbarRoot: {
-    paddingRight: 24
+    paddingRight: 24,
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 36
+    marginRight: 36,
   },
   title: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
+  Logo: {
+    flexGrow: 1,
+  },
 });
 
-const Header = props => {
+const Header = (props) => {
   const { classes, handleToggleDrawer } = props;
   return (
     <AppBar position="fixed">
-      <Toolbar color="indigo" disableGutters={true} classes={{ root: classes.toolbarRoot }}>
+      <Toolbar
+        color="indigo"
+        flexGrow={1}
+        disableGutters={true}
+        classes={{ root: classes.toolbarRoot }}
+      >
         <IconButton
           color="inherit"
           aria-label="Open drawer"
@@ -35,19 +41,12 @@ const Header = props => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={classes.title}
-        >
-          Dashboard
-        </Typography>
-        <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
+        <img
+          className={classes.Logo}
+          src="./../../../sakari_logo_w.svg"
+          height="36"
+          alt="Sakari"
+        />
         <IconButton color="inherit">
           <PersonIcon />
         </IconButton>
