@@ -41,7 +41,7 @@ const Header = (props) => {
         </IconButton>
         <img
           className={classes.Logo}
-          src="./../../../sakari_logo_w.svg"
+          src="./../../../images/sakari_logo_w.svg"
           height="36"
           alt="Sakari"
         />

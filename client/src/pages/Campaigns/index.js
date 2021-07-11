@@ -38,17 +38,8 @@ export default function Campaigns() {
       <Typography variant="h5" className={classes.title}>
         Campaigns
       </Typography>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
+      <TableContainer component={Paper} >
+        <Table className={classes.table} elevation={1} aria-label="simple table">
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.name}>
