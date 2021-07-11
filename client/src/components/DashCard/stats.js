@@ -1,28 +1,78 @@
 import React from "react";
+import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    padding: 30,
+    width: 110,
+    padding: 0,
+    flexDirection: "column",
+  },
+  statsdiv: {
+    height: 32,
+    padding: 0,
+    fontWeight: "bold",
+    marginTop: 5,
+    marginBottom: 5,
   },
   circle: {
-    height: 70,
-    width: 70,
-    borderRadius: 100,
+    height: 32,
+    width: 32,
+    borderRadius: 50,
+    backgroundColor: "#bbdefb",
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#1565c0",
+    marginRight: 10,
   },
-  pos: {
-    marginBottom: 12,
+  legend: {
+    color: "#42a5f5",
+    textTransform: "uppercase",
   },
-});
+}));
 
 export default function DashCardStats(props) {
   const classes = useStyles();
   return (
     <>
-      <div className={classes.circle}>1</div>
+      <Box display="flex" flexDirection="column" className={classes.root}>
+        <Box
+          display="flex"
+          alignItems="center"
+          flexDirection="row"
+          className={classes.statsdiv}
+        >
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            className={classes.circle}
+          >
+            {props.stat1count}
+          </Box>
+          <span className={classes.legend}>{props.stat1name}</span>
+        </Box>
+        {props.stat2count > 0 ? (
+          <Box
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            className={classes.statsdiv}
+          >
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              className={classes.circle}
+            >
+              {props.stat2count}
+            </Box>
+            <span className={classes.legend}>{props.stat2name}</span>
+          </Box>
+        ) : (
+          ""
+        )}
+      </Box>
     </>
   );
 }

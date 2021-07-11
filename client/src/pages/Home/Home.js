@@ -23,24 +23,63 @@ const useStyles = makeStyles((theme) => ({
 export default function NestedGrid() {
   const classes = useStyles();
 
-
   return (
     <div className={classes.root}>
-      <Grid container spacing={4} >
+      <Grid container spacing={4}>
         <Grid item xs={6}>
-          <DashCard subtitle="MESSAGES" icon="GroupIcon" title="Send a message" explain="Message your contacts and groups" />
+          <DashCard
+            subtitle="MESSAGES"
+            title="Send a message"
+            explain="Message contacts and groups"
+            stat1count={3}
+            stat1name="Sent"
+            stat2count={1}
+            stat2name="Waiting"
+          />
         </Grid>
         <Grid item xs={6}>
-          <DashCard subtitle="CONTACTS" title="Manage contacts" explain="Manage and group recipients" />
+          <DashCard
+            subtitle="CONTACTS"
+            title="Manage contacts"
+            explain="Manage and group recipients"
+            stat1count={102}
+            stat1name="Contacts"
+            stat2count={0}
+            stat2name="Waiting"
+          />
         </Grid>
         <Grid item xs={6}>
-          <DashCard subtitle="CAMPAIGNS" title="Manage campaigns" explain="Run campaigns" />
+          <DashCard
+            subtitle="CAMPAIGNS"
+            title="Manage campaigns"
+            explain="Run campaigns"
+            stat1count={5}
+            stat1name="Running"
+            stat2count={11}
+            stat2name="Paused"
+          />
         </Grid>
         <Grid item xs={6}>
-          <DashCard subtitle="TEMPLATES" title="Layout designs" explain="Design and format your messages" />
+          <DashCard
+            subtitle="TEMPLATES"
+            title="Layout designs"
+            explain="Design and format your messages"
+            stat1count={3}
+            stat1name="Used"
+            stat2count={2}
+            stat2name="Saved"
+          />
         </Grid>
         <Grid item xs={6}>
-          <DashCard subtitle="INTEGRATIONS" title="App Integrations" explain="Connect your productivity apps" />
+          <DashCard
+            subtitle="INTEGRATIONS"
+            title="App Integrations"
+            explain="Connect your productivity apps"
+            stat1count={5}
+            stat1name="Running"
+            stat2count={0}
+            stat2name="Saved"
+          />
         </Grid>
         <Grid item xs={6}>
           <DashCard subtitle="SETTINGS" title="Card1" buttonText="start" />

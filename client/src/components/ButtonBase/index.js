@@ -97,7 +97,7 @@ export default function ButtonBases(props) {
             color="inherit"
             className={classes.buttonTitle}
           >
-            {props.title}
+            {button.title}
             <span className={classes.buttonMarked} />
           </Typography>
         </span>
