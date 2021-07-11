@@ -5,16 +5,19 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import Messages from "./pages/Messages/";
-import Campaigns from "./pages/Campaigns";
+import Contacts from "./pages/Campaigns";
+import Campaigns from "./pages/Contacts";
+import Templates from "./pages/Templates";
 import Alerts from "./pages/Alerts/Alerts";
-import Setting from "./pages/Setting/Setting";
+import Integrations from "./pages/Integrations";
+import Settings from "./pages/Settings";
 
 import MainLayout from "./layouts/MainLayout";
 import EmptyLayout from "./layouts/EmptyLayout";
 
-import { getTheme } from "./pages/Setting/settingsReducer";
+import { getTheme } from "./pages/Settings/settingsReducer";
 
 const NotFound = () => {
   return <div>NotFound</div>;
@@ -55,12 +58,14 @@ export default function App() {
       <div style={{ height: "100vh" }}>
         <Router>
           <Switch>
-            <DashboardRoute path="/dashboard" component={Home} />
+            <DashboardRoute exact path="/" component={Home} />
             <DashboardRoute path="/alerts" component={Alerts} />
             <DashboardRoute path="/messages" component={Messages} />
+            <DashboardRoute path="/contacts" component={Contacts} />
             <DashboardRoute path="/campaigns" component={Campaigns} />
-            <DashboardRoute path="/setting" component={Setting} />
-            <DashboardRoute exact path="/" component={Home} />
+            <DashboardRoute path="/templates" component={Templates} />
+            <DashboardRoute path="/integrations" component={Integrations} />
+            <DashboardRoute path="/settings" component={Settings} />
             <EmptyRoute component={NotFound} />
           </Switch>
         </Router>

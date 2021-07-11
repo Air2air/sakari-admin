@@ -39,7 +39,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Messages() {
+export default function Campaigns() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -90,7 +90,7 @@ export default function Messages() {
   return (
     <div className={classes.root}>
       <Typography variant="h5" className={classes.title}>
-        Messages
+        Send a new message
       </Typography>
 
       <Stepper activeStep={activeStep}>

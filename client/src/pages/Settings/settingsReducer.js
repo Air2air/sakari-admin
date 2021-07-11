@@ -12,7 +12,7 @@ const themeConfig = {
   },
   palette: {
     primary: blue,
-    secondary: green,
+    secondary: red,
     error: red,
     // Used by `getContrastText()` to maximize the contrast between the background and
     // the text.

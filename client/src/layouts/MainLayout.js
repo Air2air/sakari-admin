@@ -5,36 +5,36 @@ import classNames from "classnames";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   content: {
     flexGrow: 1,
     marginLeft: theme.spacing(9),
-    padding: theme.spacing(3),
+    padding: theme.spacing(8),
     marginTop: theme.spacing(7),
-    overflowX: "hidden"
+    overflowX: "hidden",
   },
   contentShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  }
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
 });
 
 class MainLayout extends Component {
   state = {
-    open: false
+    open: false,
   };
 
   handleToggleDrawer = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { open: !prevState.open };
     });
   };
@@ -44,12 +44,10 @@ class MainLayout extends Component {
     return (
       <>
         <div className={classes.root}>
-          <Header
-            handleToggleDrawer={this.handleToggleDrawer}
-          />
+          <Header handleToggleDrawer={this.handleToggleDrawer} />
           <main
             className={classNames(classes.content, {
-              [classes.contentShift]: this.state.open
+              [classes.contentShift]: this.state.open,
             })}
           >
             {children}

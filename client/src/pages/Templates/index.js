@@ -14,7 +14,6 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
   title: {
-    marginTop: 30,
     marginBottom: 30,
   },
 });

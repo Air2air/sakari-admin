@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import DashCard from "../../components/DashCard";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,18 +14,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+    marginBottom: 30,
   },
 }));
 
-export default function NestedGrid() {
+export default function Home() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+      <Typography variant="h5" className={classes.title}>
+        Dashboard
+      </Typography>
       <Grid container spacing={4}>
         <Grid item xs={6}>
           <DashCard

@@ -90,7 +90,7 @@ export default function Messages() {
   return (
     <div className={classes.root}>
       <Typography variant="h5" className={classes.title}>
-        Messages
+        Send a new message
       </Typography>
 
       <Stepper activeStep={activeStep}>

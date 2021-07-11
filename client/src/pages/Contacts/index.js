@@ -30,13 +30,13 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
-export default function Campaigns() {
+export default function Contacts() {
   const classes = useStyles();
 
   return (
     <>
       <Typography variant="h5" className={classes.title}>
-        Campaigns
+      Contacts
       </Typography>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">

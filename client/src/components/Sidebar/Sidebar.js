@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import AutorenewIcon from '@material-ui/icons/Autorenew';
+import AutorenewIcon from "@material-ui/icons/Autorenew";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GroupIcon from "@material-ui/icons/Group";
 import MessageIcon from "@material-ui/icons/Message";
@@ -36,7 +36,7 @@ const styles = (theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(8),
+    width: theme.spacing(5),
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9),
     },
@@ -57,77 +57,77 @@ const Sidebar = (props) => {
       open={open}
     >
       <List>
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText style={{ color: "#555" }} primary="Dashboard" />
           </ListItem>
         </Link>
 
-        <Link to="/messages">
+        <Link to="/messages" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <SendIcon />
             </ListItemIcon>
-            <ListItemText primary="Messages" />
+            <ListItemText style={{ color: "#555" }} primary="Messages" />
           </ListItem>
         </Link>
 
-        <Link to="/contacts">
+        <Link to="/contacts" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <GroupIcon />
             </ListItemIcon>
-            <ListItemText primary="Contacts" />
+            <ListItemText style={{ color: "#555" }} primary="Contacts" />
           </ListItem>
         </Link>
 
-        <Link to="/campaigns">
+        <Link to="/campaigns" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <MessageIcon />
             </ListItemIcon>
-            <ListItemText primary="Campaigns" />
+            <ListItemText style={{ color: "#555" }} primary="Campaigns" />
           </ListItem>
         </Link>
 
-        <Link to="/templates">
+        <Link to="/templates" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
-            <ListItemText primary="Templates" />
+            <ListItemText style={{ color: "#555" }} primary="Templates" />
           </ListItem>
         </Link>
 
-        <Link to="/integrations">
+        <Link to="/integrations" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <AutorenewIcon />
             </ListItemIcon>
-            <ListItemText primary="Integrations" />
+            <ListItemText style={{ color: "#555" }} primary="Integrations" />
           </ListItem>
         </Link>
 
-        <Link to="/alerts">
+        <Link to="/alerts" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </ListItemIcon>
-            <ListItemText primary="Alerts" />
+            <ListItemText style={{ color: "#555" }} primary="Alerts" />
           </ListItem>
         </Link>
 
-        <Link to="/setting">
+        <Link to="/settings" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary="Settings" />
+            <ListItemText style={{ color: "#555" }} primary="Settings" />
           </ListItem>
         </Link>
       </List>
