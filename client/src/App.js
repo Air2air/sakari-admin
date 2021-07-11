@@ -6,7 +6,8 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
 import Home from "./pages/Home/Home";
-import Messages from "./pages/Messages/Messages";
+import Messages from "./pages/Messages/";
+import Campaigns from "./pages/Campaigns";
 import Alerts from "./pages/Alerts/Alerts";
 import Setting from "./pages/Setting/Setting";
 
@@ -57,6 +58,7 @@ export default function App() {
             <DashboardRoute path="/dashboard" component={Home} />
             <DashboardRoute path="/alerts" component={Alerts} />
             <DashboardRoute path="/messages" component={Messages} />
+            <DashboardRoute path="/campaigns" component={Campaigns} />
             <DashboardRoute path="/setting" component={Setting} />
             <DashboardRoute exact path="/" component={Home} />
             <EmptyRoute component={NotFound} />
