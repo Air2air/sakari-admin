@@ -37,7 +37,7 @@ const Header = (props) => {
           onClick={handleToggleDrawer}
           className={classes.menuButton}
         >
-          <MenuIcon />
+          <MenuIcon fontSize="large" />
         </IconButton>
         <img
           className={classes.Logo}
@@ -46,7 +46,7 @@ const Header = (props) => {
           alt="Sakari"
         />
         <IconButton color="inherit">
-          <PersonIcon />
+          <PersonIcon fontSize="large" />
         </IconButton>
       </Toolbar>
     </AppBar>

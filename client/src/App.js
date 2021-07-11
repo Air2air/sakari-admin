@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 import Home from "./pages/Home";
 import Messages from "./pages/Messages/";
-import Contacts from "./pages/Campaigns";
-import Campaigns from "./pages/Contacts";
+import Contacts from "./pages/Contacts";
+import Campaigns from "./pages/Campaigns";
 import Templates from "./pages/Templates";
 import Alerts from "./pages/Alerts/Alerts";
 import Integrations from "./pages/Integrations";
@@ -58,7 +58,7 @@ export default function App() {
       <div style={{ height: "100vh" }}>
         <Router>
           <Switch>
-            <DashboardRoute exact path="/" component={Home} />
+            <DashboardRoute exact path="/" component={Home}/>
             <DashboardRoute path="/alerts" component={Alerts} />
             <DashboardRoute path="/messages" component={Messages} />
             <DashboardRoute path="/contacts" component={Contacts} />

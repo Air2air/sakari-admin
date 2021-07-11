@@ -10,12 +10,13 @@ import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
+import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GroupIcon from "@material-ui/icons/Group";
-import MessageIcon from "@material-ui/icons/Message";
+import ForumIcon from "@material-ui/icons/Forum";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 const drawerWidth = 240;
 
@@ -57,10 +58,11 @@ const Sidebar = (props) => {
       open={open}
     >
       <List>
+        <br/>
         <Link to="/" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <HomeIcon />
+              <HomeIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Dashboard" />
           </ListItem>
@@ -69,25 +71,25 @@ const Sidebar = (props) => {
         <Link to="/messages" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <SendIcon />
+              <SendIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Messages" />
-          </ListItem>
-        </Link>
-
-        <Link to="/campaigns" style={{ textDecoration: "none" }}>
-          <ListItem button>
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText style={{ color: "#555" }} primary="Contacts" />
           </ListItem>
         </Link>
 
         <Link to="/contacts" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <MessageIcon />
+              <GroupIcon style={{ color: blue[500] }}/>
+            </ListItemIcon>
+            <ListItemText style={{ color: "#555" }} primary="Contacts" />
+          </ListItem>
+        </Link>
+
+        <Link to="/campaigns" style={{ textDecoration: "none" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <ForumIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Campaigns" />
           </ListItem>
@@ -96,7 +98,7 @@ const Sidebar = (props) => {
         <Link to="/templates" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <DashboardIcon />
+              <DashboardIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Templates" />
           </ListItem>
@@ -105,7 +107,7 @@ const Sidebar = (props) => {
         <Link to="/integrations" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <AutorenewIcon />
+              <AccountTreeIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Integrations" />
           </ListItem>
@@ -115,7 +117,7 @@ const Sidebar = (props) => {
           <ListItem button>
             <ListItemIcon>
               <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+                <NotificationsIcon style={{ color: blue[500] }}/>
               </Badge>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Alerts" />
@@ -125,7 +127,7 @@ const Sidebar = (props) => {
         <Link to="/settings" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <SettingsIcon />
+              <SettingsIcon style={{ color: blue[500] }}/>
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Settings" />
           </ListItem>

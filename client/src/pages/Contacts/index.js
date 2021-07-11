@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import TitleBar from "../../components/TitleBar";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -30,13 +30,14 @@ const rows = [
 ];
 
 export default function Contacts() {
+
+  const pageIcon = "Doodle"
+  const pageTitle = "Campaigns"
   const classes = useStyles();
 
   return (
     <>
-      <Typography variant="h5" className={classes.title}>
-      Contacts
-      </Typography>
+      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableBody>

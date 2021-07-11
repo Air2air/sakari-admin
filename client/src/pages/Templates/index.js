@@ -1,12 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import TitleBar from "../../components/TitleBar";
 
 const useStyles = makeStyles({
   table: {
@@ -30,13 +30,14 @@ const rows = [
 ];
 
 export default function Templates() {
+
+  const pageIcon = "Doodle"
+  const pageTitle = "Templates"
   const classes = useStyles();
 
   return (
     <>
-      <Typography variant="h5" className={classes.title}>
-        Templates
-      </Typography>
+      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableBody>

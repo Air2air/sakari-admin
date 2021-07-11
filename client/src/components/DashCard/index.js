@@ -6,12 +6,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import SendIcon from "@material-ui/icons/Send";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
+import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import GroupIcon from "@material-ui/icons/Group";
-import MessageIcon from "@material-ui/icons/Message";
+import ForumIcon from "@material-ui/icons/Forum";
 import DashCardStats from "./stats";
 import { Link } from "react-router-dom";
-import Grow from "@material-ui/core/Grow";
 
 const determineIcon = (...props) => {
   if (props.subtitle === "MESSAGES") {
@@ -19,11 +18,11 @@ const determineIcon = (...props) => {
   } else if (props.subtitle === "CONTACTS") {
     return <GroupIcon />;
   } else if (props.subtitle === "CAMPAIGNS") {
-    return <MessageIcon />;
+    return <ForumIcon />;
   } else if (props.subtitle === "TEMPLATES") {
     return <DashboardIcon />;
   } else if (props.subtitle === "INTEGRATIONS") {
-    return <AutorenewIcon />;
+    return <AccountTreeIcon />;
   }
 };
 
@@ -51,7 +50,6 @@ const useStyles = makeStyles({
 export default function DashCard(props) {
   const classes = useStyles();
   return (
-    <Grow in>
       <Link to={props.link} style={{ textDecoration: "none" }}>
         <Card className={classes.root} m={2} elevation={0}>
           <Box
@@ -73,6 +71,5 @@ export default function DashCard(props) {
           </Box>
         </Card>
       </Link>
-    </Grow>
   );
 }

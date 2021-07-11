@@ -4,6 +4,7 @@ import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
+import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,11 @@ function getStepContent(step) {
 }
 
 export default function Messages() {
+
+  const pageIcon = "Doodle"
+  const pageTitle = "Messages"
   const classes = useStyles();
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
@@ -89,9 +94,7 @@ export default function Messages() {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h5" className={classes.title}>
-        Messages
-      </Typography>
+      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
 
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {

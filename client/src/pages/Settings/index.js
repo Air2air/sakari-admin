@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -11,7 +10,7 @@ import Switch from "@material-ui/core/Switch";
 import PaletteIcon from "@material-ui/icons/Palette";
 import CompareArrowsIcon from "@material-ui/icons/CompareArrows";
 import { useSelector, useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
+import TitleBar from "../../components/TitleBar";
 
 import {
   toggleThemeMode,
@@ -20,17 +19,12 @@ import {
   isColorSwaped,
 } from "./settingsReducer";
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-  title: {
-    marginBottom: 30,
-  },
-});
 
 export default function Settings() {
-  const classes = useStyles();
+
+  const pageIcon = "Doodle"
+  const pageTitle = "Settings"
+  // const classes = useStyles();
 
   const darkMode = useSelector(isDarkMode);
   const colorSwaped = useSelector(isColorSwaped);
@@ -39,9 +33,7 @@ export default function Settings() {
 
   return (
     <div>
-      <Typography variant="h5" className={classes.title}>
-        Settings
-      </Typography>
+      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
       <Card>
         <CardContent>
           <List>
