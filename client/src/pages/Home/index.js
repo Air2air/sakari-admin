@@ -18,6 +18,81 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function createData(
+  link,
+  subtitle,
+  title,
+  explain,
+  stat1count,
+  stat1name,
+  stat2count,
+  stat2name
+) {
+  return {
+    link,
+    subtitle,
+    title,
+    explain,
+    stat1count,
+    stat1name,
+    stat2count,
+    stat2name,
+  };
+}
+
+const rows = [
+  createData(
+    "/messages",
+    "Message",
+    "Send a Message",
+    "Message contacts and groups",
+    3,
+    "sent",
+    1,
+    "Waiting"
+  ),
+  createData(
+    "/contacts",
+    "contacts",
+    "Manage contacts",
+    "Manage and group recipients",
+    54,
+    "contacts",
+    3,
+    "groups"
+  ),
+  createData(
+    "/campaigns",
+    "campaigns",
+    "Run campaigns",
+    "Manage campaigns",
+    5,
+    "running",
+    11,
+    "paused"
+  ),
+  createData(
+    "/templates",
+    "templates",
+    "Design layouts",
+    "design and format your messages",
+    3,
+    "used",
+    2,
+    "saved"
+  ),
+  createData(
+    "/integrations",
+    "integrations",
+    "App integrations",
+    "Connect your productivity apps",
+    5,
+    "running",
+    1,
+    "issue"
+  ),
+];
+
 export default function Home() {
   const classes = useStyles();
 
@@ -27,64 +102,20 @@ export default function Home() {
         Dashboard
       </Typography>
       <Grid container spacing={4}>
-        <Grid item xs={6}>
-          <DashCard
-            subtitle="MESSAGES"
-            title="Send a message"
-            explain="Message contacts and groups"
-            stat1count={3}
-            stat1name="Sent"
-            stat2count={1}
-            stat2name="Waiting"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DashCard
-            subtitle="CONTACTS"
-            title="Manage contacts"
-            explain="Manage and group recipients"
-            stat1count={102}
-            stat1name="Contacts"
-            stat2count={0}
-            stat2name="Waiting"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DashCard
-            subtitle="CAMPAIGNS"
-            title="Manage campaigns"
-            explain="Run campaigns"
-            stat1count={5}
-            stat1name="Running"
-            stat2count={11}
-            stat2name="Paused"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DashCard
-            subtitle="TEMPLATES"
-            title="Layout designs"
-            explain="Design and format your messages"
-            stat1count={3}
-            stat1name="Used"
-            stat2count={2}
-            stat2name="Saved"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DashCard
-            subtitle="INTEGRATIONS"
-            title="App Integrations"
-            explain="Connect your productivity apps"
-            stat1count={5}
-            stat1name="Running"
-            stat2count={0}
-            stat2name="Saved"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <DashCard subtitle="SETTINGS" title="Card1" buttonText="start" />
-        </Grid>
+        {rows.map((row) => (
+          <Grid item xs={6}>
+            <DashCard
+              link={row.link}
+              subtitle={row.subtitle}
+              title={row.title}
+              explain={row.explain}
+              stat1count={row.stat1count}
+              stat1name={row.stat1name}
+              stat2count={row.stat2count}
+              stat2name={row.stat2name}
+            />
+          </Grid>
+        ))}
       </Grid>
     </div>
   );

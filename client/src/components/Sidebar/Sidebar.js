@@ -75,7 +75,7 @@ const Sidebar = (props) => {
           </ListItem>
         </Link>
 
-        <Link to="/contacts" style={{ textDecoration: "none" }}>
+        <Link to="/campaigns" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <GroupIcon />
@@ -84,7 +84,7 @@ const Sidebar = (props) => {
           </ListItem>
         </Link>
 
-        <Link to="/campaigns" style={{ textDecoration: "none" }}>
+        <Link to="/contacts" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
               <MessageIcon />

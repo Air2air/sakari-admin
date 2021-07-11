@@ -10,8 +10,10 @@ import AutorenewIcon from "@material-ui/icons/Autorenew";
 import GroupIcon from "@material-ui/icons/Group";
 import MessageIcon from "@material-ui/icons/Message";
 import DashCardStats from "./stats";
+import { Link } from "react-router-dom";
+import Grow from "@material-ui/core/Grow";
 
-const determineIcon = (props) => {
+const determineIcon = (...props) => {
   if (props.subtitle === "MESSAGES") {
     return <SendIcon />;
   } else if (props.subtitle === "CONTACTS") {
@@ -28,9 +30,6 @@ const determineIcon = (props) => {
 const useStyles = makeStyles({
   root: {
     padding: 30,
-    hover: {
-      backgroundColor: "red",
-    },
   },
   text_section: {
     padding: 0,
@@ -39,43 +38,41 @@ const useStyles = makeStyles({
   card_content: {
     padding: 0,
   },
+  subtitle: {
+    fontSize: 12,
+    textTransform: "uppercase",
+    color: "#42a5f5",
+  },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
 
 export default function DashCard(props) {
   const classes = useStyles();
   return (
-    <Card className={classes.root} m={2} elevation={0}>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-        className={classes.card_content}
-      >
-        <CardContent className={classes.text_section}>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
+    <Grow in>
+      <Link to={props.link} style={{ textDecoration: "none" }}>
+        <Card className={classes.root} m={2} elevation={0}>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            className={classes.card_content}
           >
-            {determineIcon(props.subtitle)}
-            {props.subtitle}
-          </Typography>
-          <Typography variant="h5" component="h2">
-            {props.title}
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            {props.explain}
-          </Typography>
-        </CardContent>
-        <DashCardStats {...props} />
-      </Box>
-    </Card>
+            <CardContent className={classes.text_section}>
+              <Typography className={classes.subtitle} gutterBottom>
+                {determineIcon(props.subtitle)}
+                {props.subtitle}
+              </Typography>
+              <Typography variant="h6">{props.title}</Typography>
+              <Typography color="textSecondary">{props.explain}</Typography>
+            </CardContent>
+            <DashCardStats {...props} />
+          </Box>
+        </Card>
+      </Link>
+    </Grow>
   );
 }
