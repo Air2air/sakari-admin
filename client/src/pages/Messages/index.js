@@ -42,7 +42,7 @@ function getStepContent(step) {
 
 export default function Messages() {
 
-  const pageIcon = "Doodle"
+  const pageIcon = "Messages"
   const pageTitle = "Messages"
   const classes = useStyles();
 
@@ -94,7 +94,7 @@ export default function Messages() {
 
   return (
     <div className={classes.root}>
-      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
+      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
 
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {

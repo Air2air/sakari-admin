@@ -78,15 +78,15 @@ const runningRows = [
   ),
 ];
 
-export default function Home() {
+export default function Integrations() {
 
-  const pageIcon = "Doodle"
-  const pageTitle = "Home"
+  const pageIcon = "Integrations"
+  const pageTitle = "Integrations"
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
+      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
       <Grid container spacing={4}>
         {runningRows.map((runningRow) => (
           <Grid item xs={4} key={runningRow.link}>

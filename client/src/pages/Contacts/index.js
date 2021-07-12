@@ -31,13 +31,13 @@ const rows = [
 
 export default function Contacts() {
 
-  const pageIcon = "Doodle"
-  const pageTitle = "Campaigns"
+  const pageIcon = "Contacts"
+  const pageTitle = "Contacts"
   const classes = useStyles();
 
   return (
     <>
-      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
+      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableBody>

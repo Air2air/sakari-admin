@@ -111,13 +111,13 @@ const rows = [
 
 export default function Home(props) {
 
-  const pageIcon = "Doodle"
+  const pageIcon = "Home"
   const pageTitle = "Home"
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
+      <TitleBar pageTitle={pageTitle} pageIcon={pageIcon}/>
       <Grid container spacing={4}>
         {rows.map((row) => (
           <Grid item xs={6} key={row.link}>

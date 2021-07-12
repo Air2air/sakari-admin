@@ -22,7 +22,7 @@ import {
 
 export default function Settings() {
 
-  const pageIcon = "Doodle"
+  const pageIcon = "Settings"
   const pageTitle = "Settings"
   // const classes = useStyles();
 
@@ -33,7 +33,7 @@ export default function Settings() {
 
   return (
     <div>
-      <TitleBar pageTitle={pageTitle} icon={pageIcon}/>
+      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
       <Card>
         <CardContent>
           <List>
