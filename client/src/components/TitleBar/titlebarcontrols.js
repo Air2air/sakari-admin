@@ -20,7 +20,14 @@ const TitleBarControls = (props) => {
       alignItems="center"
       className={classes.root}
     >
-Doodle
+      {props.pageIcon === "Home" && ("Home stuff")}
+      {props.pageIcon === "Messages" &&  "Home stuff"}
+      {props.pageIcon === "Contacts" && "Home stuff"}
+      {props.pageIcon === "Campaigns" && "Home stuff"}
+      {props.pageIcon === "Templates" && "Home stuff"}
+      {props.pageIcon === "Integrations" && "Home stuff"}
+      {props.pageIcon === "Settings" && "Home stuff"}
+      {props.pageIcon === "Alerts" && "Home stuff"}
     </Box>
   );
 };
