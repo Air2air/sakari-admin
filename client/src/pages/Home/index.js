@@ -57,7 +57,7 @@ const rows = [
     "#039be5",
     1,
     "Waiting",
-    "primary"
+    "warning"
   ),
   createData(
     "/contacts",
@@ -69,17 +69,17 @@ const rows = [
     "default",
     3,
     "groups",
-    "success"
+    "primary"
   ),
   createData(
     "/campaigns",
     "campaigns",
     "Run campaigns",
     "Manage campaigns",
-    5,
+    2,
     "running",
-    "primary",
-    11,
+    "success",
+    1,
     "paused",
     "warning"
   ),
@@ -89,7 +89,7 @@ const rows = [
     "Design layouts",
     "design and format your messages",
     3,
-    "used",
+    "in use",
     "primary",
     2,
     "saved",
@@ -100,7 +100,7 @@ const rows = [
     "integrations",
     "App integrations",
     "Connect your productivity apps",
-    5,
+    3,
     "running",
     "primary",
     1,
@@ -114,13 +114,13 @@ export default function Home(props) {
   const pageIcon = "Home";
   const pageTitle = "Home";
 
-  const stats1Count = 3;
-  const stats1status ="danger";
-  const stats1Name = " problems";
+  const stat1count = 3;
+  const stat1status ="danger";
+  const stat1name = " problems";
 
-  const stats2Count = 0;
-  const stats2status ="danger";
-  const stats2Name = " problems";
+  const stat2count = 0;
+  const stat2status ="danger";
+  const stat2name = " problems";
 
   const classes = useStyles();
 
@@ -135,14 +135,14 @@ export default function Home(props) {
       >
         <TitleBar pageTitle={pageTitle} pageIcon={pageIcon} />
         <StatsDot
-          status={stats1status}
-          statCount={stats1Count}
-          statName={stats1Name}
+          status={stat1status}
+          statCount={stat1count}
+          statName={stat1name}
         />
-        {stats2Count > 0 && <StatsDot
-          status={stats2status}
-          statCount={stats2Count}
-          statName={stats2Name}
+        {stat2count > 0 && <StatsDot
+          status={stat2status}
+          statCount={stat2count}
+          statName={stat2name}
         />}
       </Box>
       <Grid container spacing={4}>

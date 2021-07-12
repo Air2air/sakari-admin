@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IntegrationsCard from "../../components/IntegrationsCard";
 import TitleBar from "../../components/TitleBar";
+import StatsDot from "../../components/StatsDot";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +26,21 @@ function createData(
   thumb,
   stat1count,
   stat1name,
-  stat1bg,
+  stat1status,
   stat2count,
   stat2name,
-  stat2bg
+  stat2status
 ) {
   return {
     link,
     subtitle,
-  thumb,
+    thumb,
     stat1count,
     stat1name,
-    stat1bg,
+    stat1status,
     stat2count,
     stat2name,
-    stat2bg,
+    stat2status,
   };
 }
 
@@ -49,44 +51,71 @@ const runningRows = [
     "11.png",
     3,
     "sent",
-    "#039be5",
+    "primary",
     1,
-    "Waiting",
-    "#ffab40"
+    "Error",
+    "danger"
   ),
   createData(
     "/contacts",
     "Hubspot",
     "16.png",
     4,
-    "contact",
-    "#039be5",
+    "requests",
+    "success",
     3,
-    "groups",
-    "#4db6ac"
+    "sends",
+    "success"
   ),
   createData(
     "/campaigns",
     "Slack",
     "23.png",
-    5,
-    "running",
-    "#4db6ac",
-    11,
-    "paused",
-    "#039be5"
+    15,
+    "requests",
+    "success",
+    3,
+    "sends",
+    "success"
   ),
 ];
 
 export default function Integrations() {
-
-  const pageIcon = "Integrations"
-  const pageTitle = "Integrations"
+  const pageIcon = "Integrations";
+  const pageTitle = "Integrations";
   const classes = useStyles();
+
+  const stat1count = 3;
+  const stat1status ="danger";
+  const stat1name = " problems";
+
+  const stat2count = 0;
+  const stat2status ="danger";
+  const stat2name = " problems";
 
   return (
     <div className={classes.root}>
-      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="baseline"
+        className={classes.root}
+      >
+        <TitleBar pageTitle={pageTitle} pageIcon={pageIcon} />
+        <StatsDot
+          status={stat1status}
+          statCount={stat1count}
+          statName={stat1name}
+        />
+        {stat2count > 0 && (
+          <StatsDot
+            status={stat2status}
+            statCount={stat2count}
+            statName={stat2name}
+          />
+        )}
+      </Box>
       <Grid container spacing={4}>
         {runningRows.map((runningRow) => (
           <Grid item xs={4} key={runningRow.link}>
@@ -96,10 +125,10 @@ export default function Integrations() {
               thumb={runningRow.thumb}
               stat1count={runningRow.stat1count}
               stat1name={runningRow.stat1name}
-              stat1bg={runningRow.stat1bg}
+              stat1status={runningRow.stat1status}
               stat2count={runningRow.stat2count}
               stat2name={runningRow.stat2name}
-              stat2bg={runningRow.stat2bg}
+              stat2status={runningRow.stat2status}
             />
           </Grid>
         ))}

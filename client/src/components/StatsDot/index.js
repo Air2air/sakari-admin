@@ -1,7 +1,13 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import { red, blue, orange, grey } from "@material-ui/core/colors";
+import {
+  red,
+  blue,
+  orange,
+  green,
+  blueGrey,
+} from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,11 +41,11 @@ export default function StatsDot(props) {
   const classes = useStyles();
 
   if (props.status === "default") {
-    dotColor = grey[400];
+    dotColor = blueGrey[300];
   } else if (props.status === "success") {
-    dotColor = grey[400];
+    dotColor = green[400];
   } else if (props.status === "warning") {
-    dotColor = orange[400];
+    dotColor = orange[600];
   } else if (props.status === "danger") {
     dotColor = red[400];
   } else {
@@ -58,7 +64,9 @@ export default function StatsDot(props) {
         >
           {props.statCount}
         </Box>
-        <span className={classes.legend} style={{ color: `${dotColor}` }}>{props.statName}</span>
+        <span className={classes.legend} style={{ color: `${dotColor}` }}>
+          {props.statName}
+        </span>
       </Box>
     </>
   );

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import IntegrationsCardStats from "./stats";
+import StatsDot from "../StatsDot";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 
@@ -53,9 +53,18 @@ export default function IntegrationsCard(props) {
                 alt="Sakari"
               />
             </CardContent>
-
-            
-            <IntegrationsCardStats {...props} />
+            <Box display="flex" flexDirection="column" className={classes.root}>
+            <StatsDot
+              status={props.stat1status}
+              statCount={props.stat1count}
+              statName={props.stat1name}
+            />
+            <StatsDot
+              status={props.stat2status}
+              statCount={props.stat2count}
+              statName={props.stat2name}
+            />
+          </Box>
           </Box>
         </Box>
       </Card>
