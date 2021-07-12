@@ -12,9 +12,6 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-  title: {
-    marginBottom: 30,
-  },
 });
 
 function createData(name, calories, fat, carbs, protein) {
@@ -30,31 +27,58 @@ const rows = [
 ];
 
 export default function Campaigns() {
-
-  const pageIcon = "Campaigns"
-  const pageTitle = "Campaigns"
+  const pageIcon = "Campaigns";
+  const pageTitle = "Campaigns";
   const classes = useStyles();
+
+  const stat1count = 3;
+  const stat1status = "danger";
+  const stat1name = " problems";
+
+  const stat2count = 0;
+  const stat2status = "danger";
+  const stat2name = " problems";
+
+  const newButtonLink = "/new";
+  const newButtonText = "New Campaign";
 
   return (
     <>
-      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
-      <TableContainer component={Paper} >
-        <Table className={classes.table} elevation={1} aria-label="simple table">
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div className={classes.root}>
+        <TitleBar
+          pageTitle={pageTitle}
+          pageIcon={pageIcon}
+          stat1count={stat1count}
+          stat1status={stat1status}
+          stat1name={stat1name}
+          stat2count={stat2count}
+          stat2status={stat2status}
+          stat2name={stat2name}
+          newButtonLink={newButtonLink}
+          newButtonText={newButtonText}
+        />
+        <TableContainer component={Paper}>
+          <Table
+            className={classes.table}
+            elevation={1}
+            aria-label="simple table"
+          >
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.calories}</TableCell>
+                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell align="right">{row.protein}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </>
   );
 }

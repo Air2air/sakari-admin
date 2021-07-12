@@ -6,6 +6,8 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
+import TitleRightSide from "../../components/TitleRightSide";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,10 +94,32 @@ export default function Messages() {
     setActiveStep(0);
   };
 
-  return (
-    <div className={classes.root}>
-      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
+  const stat1count = 3;
+  const stat1status ="danger";
+  const stat1name = " problems";
 
+  const stat2count = 0;
+  const stat2status ="danger";
+  const stat2name = " problems";
+
+  const newButtonLink = "/new";
+  const newButtonText = "New Message";
+
+  return (
+    <>
+      <div className={classes.root}>
+        <TitleBar
+          pageTitle={pageTitle}
+          pageIcon={pageIcon}
+          stat1count={stat1count}
+          stat1status={stat1status}
+          stat1name={stat1name}
+          stat2count={stat2count}
+          stat2status={stat2status}
+          stat2name={stat2name}
+          newButtonLink={newButtonLink}
+          newButtonText={newButtonText}
+        />
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
@@ -162,5 +186,6 @@ export default function Messages() {
         )}
       </div>
     </div>
+    </>
   );
 }

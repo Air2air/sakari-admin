@@ -8,12 +8,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-  },
-  title: {
-    marginBottom: 30,
   },
 });
 
@@ -30,14 +28,36 @@ const rows = [
 ];
 
 export default function Contacts() {
-
-  const pageIcon = "Contacts"
-  const pageTitle = "Contacts"
+  const pageIcon = "Contacts";
+  const pageTitle = "Contacts";
   const classes = useStyles();
+
+  const stat1count = 11223;
+  const stat1status ="danger";
+  const stat1name = " problems";
+
+  const stat2count = 0;
+  const stat2status ="danger";
+  const stat2name = " problems";
+
+  const newButtonLink = "/new";
+  const newButtonText = "New Contact";
 
   return (
     <>
-      <TitleBar pageTitle={pageTitle}pageIcon={pageIcon}/>
+      <div className={classes.root}>
+        <TitleBar
+          pageTitle={pageTitle}
+          pageIcon={pageIcon}
+          stat1count={stat1count}
+          stat1status={stat1status}
+          stat1name={stat1name}
+          stat2count={stat2count}
+          stat2status={stat2status}
+          stat2name={stat2name}
+          newButtonLink={newButtonLink}
+          newButtonText={newButtonText}
+        />
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableBody>
@@ -55,6 +75,7 @@ export default function Contacts() {
           </TableBody>
         </Table>
       </TableContainer>
+      </div>
     </>
   );
 }

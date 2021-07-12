@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IntegrationsCard from "../../components/IntegrationsCard";
 import TitleBar from "../../components/TitleBar";
-import StatsDot from "../../components/StatsDot";
+import TitleRightSide from "../../components/TitleRightSide";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
@@ -85,54 +85,50 @@ export default function Integrations() {
   const pageTitle = "Integrations";
   const classes = useStyles();
 
-  const stat1count = 3;
-  const stat1status ="danger";
+  const stat1count = 1;
+  const stat1status = "danger";
   const stat1name = " problems";
 
-  const stat2count = 0;
-  const stat2status ="danger";
-  const stat2name = " problems";
+  const stat2count = 3;
+  const stat2status = "default";
+  const stat2name = " Running";
+
+  const newButtonLink = "/new";
+  const newButtonText = "New Integration";
 
   return (
-    <div className={classes.root}>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="baseline"
-        className={classes.root}
-      >
-        <TitleBar pageTitle={pageTitle} pageIcon={pageIcon} />
-        <StatsDot
-          status={stat1status}
-          statCount={stat1count}
-          statName={stat1name}
+    <>
+      <div className={classes.root}>
+        <TitleBar
+          pageTitle={pageTitle}
+          pageIcon={pageIcon}
+          stat1count={stat1count}
+          stat1status={stat1status}
+          stat1name={stat1name}
+          stat2count={stat2count}
+          stat2status={stat2status}
+          stat2name={stat2name}
+          newButtonLink={newButtonLink}
+          newButtonText={newButtonText}
         />
-        {stat2count > 0 && (
-          <StatsDot
-            status={stat2status}
-            statCount={stat2count}
-            statName={stat2name}
-          />
-        )}
-      </Box>
-      <Grid container spacing={4}>
-        {runningRows.map((runningRow) => (
-          <Grid item xs={4} key={runningRow.link}>
-            <IntegrationsCard
-              link={runningRow.link}
-              subtitle={runningRow.subtitle}
-              thumb={runningRow.thumb}
-              stat1count={runningRow.stat1count}
-              stat1name={runningRow.stat1name}
-              stat1status={runningRow.stat1status}
-              stat2count={runningRow.stat2count}
-              stat2name={runningRow.stat2name}
-              stat2status={runningRow.stat2status}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+        <Grid container spacing={4}>
+          {runningRows.map((runningRow) => (
+            <Grid item xs={4} key={runningRow.link}>
+              <IntegrationsCard
+                link={runningRow.link}
+                subtitle={runningRow.subtitle}
+                thumb={runningRow.thumb}
+                stat1count={runningRow.stat1count}
+                stat1name={runningRow.stat1name}
+                stat1status={runningRow.stat1status}
+                stat2count={runningRow.stat2count}
+                stat2name={runningRow.stat2name}
+                stat2status={runningRow.stat2status}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    </>
   );
 }

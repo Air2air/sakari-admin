@@ -110,41 +110,36 @@ const rows = [
 ];
 
 export default function Home(props) {
-
   const pageIcon = "Home";
   const pageTitle = "Home";
-
-  const stat1count = 3;
-  const stat1status ="danger";
-  const stat1name = " problems";
-
-  const stat2count = 0;
-  const stat2status ="danger";
-  const stat2name = " problems";
-
   const classes = useStyles();
 
+  const stat1count = 1;
+  const stat1status = "danger";
+  const stat1name = " problem";
+
+  const stat2count = 0;
+  const stat2status = "danger";
+  const stat2name = " problems";
+
+  const newButtonLink = "";
+  const newButtonText = "New Campaign";
+
   return (
-    <div className={classes.root}>
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="baseline"
-        className={classes.root}
-      >
-        <TitleBar pageTitle={pageTitle} pageIcon={pageIcon} />
-        <StatsDot
-          status={stat1status}
-          statCount={stat1count}
-          statName={stat1name}
+    <>
+      <div className={classes.root}>
+        <TitleBar
+          pageTitle={pageTitle}
+          pageIcon={pageIcon}
+          stat1count={stat1count}
+          stat1status={stat1status}
+          stat1name={stat1name}
+          stat2count={stat2count}
+          stat2status={stat2status}
+          stat2name={stat2name}
+          newButtonLink={newButtonLink}
+          newButtonText={newButtonText}
         />
-        {stat2count > 0 && <StatsDot
-          status={stat2status}
-          statCount={stat2count}
-          statName={stat2name}
-        />}
-      </Box>
       <Grid container spacing={4}>
         {rows.map((row) => (
           <Grid item xs={6} key={row.link}>
@@ -164,5 +159,6 @@ export default function Home(props) {
         ))}
       </Grid>
     </div>
+    </>
   );
 }

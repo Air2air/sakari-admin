@@ -19,17 +19,20 @@ const useStyles = makeStyles((theme) => ({
     height: 32,
     padding: 0,
     fontWeight: "bold",
-    marginTop: 5,
-    marginBottom: 5,
+    margin: 5
+
   },
   circle: {
     height: 32,
-    width: 32,
+    width: 'auto',
+    minWidth:32,
     borderRadius: 50,
     fontWeight: "bold",
     fontSize: 16,
     color: "#FFF",
     marginRight: 10,
+    paddingLeft:6,
+    paddingRight:6,
   },
   legend: {
     textTransform: "uppercase",
