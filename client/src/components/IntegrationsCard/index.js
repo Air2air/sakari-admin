@@ -33,8 +33,8 @@ const useStyles = makeStyles({
 export default function IntegrationsCard(props) {
   const classes = useStyles();
   return (
-    <Link to={props.link} style={{ textDecoration: "none" }}>
-      <Card className={classes.root} m={2} elevation={0}>
+    <Link to={props.link} style={{ textDecoration: "none" }} >
+      <Card className={classes.root} m={2} elevation={1}>
         <Box className={classes.card_content}>
           <Typography className={classes.subtitle} gutterBottom>
             {props.subtitle}
@@ -53,7 +53,7 @@ export default function IntegrationsCard(props) {
                 alt="Sakari"
               />
             </CardContent>
-            <Box display="flex" flexDirection="column" className={classes.root}>
+            <Box display="flex" flexDirection="column" >
             <StatsDot
               status={props.stat1status}
               statCount={props.stat1count}

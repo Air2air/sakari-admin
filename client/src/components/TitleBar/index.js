@@ -13,19 +13,23 @@ import GroupIcon from "@material-ui/icons/Group";
 import ForumIcon from "@material-ui/icons/Forum";
 import StatsDot from "../../components/StatsDot";
 import Typography from "@material-ui/core/Typography";
-import { blue } from "@material-ui/core/colors";
+import { blueGrey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+  title_block: {
+    marginRight: 30,
+    color: blueGrey[600],
   },
   title_icon: {
     marginRight: 10,
-    color: blue[200],
+    color: blueGrey[100],
   },
 }));
 
-export default function TitleRightSide(props) {
+export default function TitleBar(props) {
   const classes = useStyles();
 
   return (
@@ -37,47 +41,53 @@ export default function TitleRightSide(props) {
         alignItems="baseline"
         className={classes.root}
       >
-        <Typography variant="h5" gutterBottom className={classes.root}>
-          {props.pageIcon === "Home" && (
-            <HomeIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Messages" && (
-            <SendIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Contacts" && (
-            <GroupIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Campaigns" && (
-            <ForumIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Templates" && (
-            <DashboardIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Integrations" && (
-            <AccountTreeIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Settings" && (
-            <SettingsIcon fontSize="small" className={classes.title_icon} />
-          )}
-          {props.pageIcon === "Alerts" && (
-            <NotificationsIcon
-              fontSize="small"
-              className={classes.title_icon}
-            />
-          )}
-          {props.pageTitle}
-        </Typography>
         <Box
           display="flex"
-          flexDirection="row-reverse"
+          flexDirection="row"
+          alignItems="center"
           justifyContent="start"
           className={classes.root}
         >
-          <StatsDot
-            status={props.stat1status}
-            statCount={props.stat1count}
-            statName={props.stat1name}
-          />
+          <Typography variant="h5" className={classes.title_block}>
+            {props.pageIcon === "Home" && (
+              <HomeIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Messages" && (
+              <SendIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Contacts" && (
+              <GroupIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Campaigns" && (
+              <ForumIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Templates" && (
+              <DashboardIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Integrations" && (
+              <AccountTreeIcon
+                fontSize="small"
+                className={classes.title_icon}
+              />
+            )}
+            {props.pageIcon === "Settings" && (
+              <SettingsIcon fontSize="small" className={classes.title_icon} />
+            )}
+            {props.pageIcon === "Alerts" && (
+              <NotificationsIcon
+                fontSize="small"
+                className={classes.title_icon}
+              />
+            )}
+            {props.pageTitle}
+          </Typography>
+          {props.stat1count > 0 && (
+            <StatsDot
+              status={props.stat1status}
+              statCount={props.stat1count}
+              statName={props.stat1name}
+            />
+          )}
           {props.stat2count > 0 && (
             <StatsDot
               status={props.stat2status}
@@ -85,19 +95,19 @@ export default function TitleRightSide(props) {
               statName={props.stat2name}
             />
           )}
-          {props.newButtonLink && (
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              className={classes.button}
-              endIcon={<AddIcon />}
-              value={props.newButtonLink}
-            >
-              {props.newButtonText}
-            </Button>
-          )}
         </Box>
+
+        {props.newButtonLink && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            endIcon={<AddIcon />}
+            value={props.newButtonLink}
+          >
+            {props.newButtonText}
+          </Button>
+        )}
       </Box>
     </>
   );

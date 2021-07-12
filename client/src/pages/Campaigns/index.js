@@ -31,13 +31,13 @@ export default function Campaigns() {
   const pageTitle = "Campaigns";
   const classes = useStyles();
 
-  const stat1count = 3;
-  const stat1status = "danger";
-  const stat1name = " problems";
+  const stat1count = 2;
+  const stat1status = "default";
+  const stat1name = "active";
 
   const stat2count = 0;
   const stat2status = "danger";
-  const stat2name = " problems";
+  const stat2name = "problems";
 
   const newButtonLink = "/new";
   const newButtonText = "New Campaign";

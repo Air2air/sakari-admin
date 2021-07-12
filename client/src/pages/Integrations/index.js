@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IntegrationsCard from "../../components/IntegrationsCard";
 import TitleBar from "../../components/TitleBar";
-import TitleRightSide from "../../components/TitleRightSide";
-import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,11 +85,11 @@ export default function Integrations() {
 
   const stat1count = 1;
   const stat1status = "danger";
-  const stat1name = " problems";
+  const stat1name = "problem";
 
   const stat2count = 3;
   const stat2status = "default";
-  const stat2name = " Running";
+  const stat2name = "Running";
 
   const newButtonLink = "/new";
   const newButtonText = "New Integration";

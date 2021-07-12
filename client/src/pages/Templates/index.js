@@ -7,8 +7,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import TitleBar from "../../components/TitleBar";
-import TitleRightSide from "../../components/TitleRightSide";
-import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles({
   table: {
@@ -24,7 +22,7 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Joe's", 159, 6.0, 24, 4.0),
   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
   createData("Eclair", 262, 16.0, 24, 6.0),
   createData("Cupcake", 305, 3.7, 67, 4.3),
@@ -36,13 +34,13 @@ export default function Templates() {
   const pageTitle = "Templates";
   const classes = useStyles();
 
-  const stat1count = 3;
-  const stat1status = "danger";
-  const stat1name = " problems";
+  const stat1count = 1;
+  const stat1status = "success";
+  const stat1name = "running";
 
-  const stat2count = 0;
-  const stat2status = "danger";
-  const stat2name = " problems";
+  const stat2count = 3;
+  const stat2status = "default";
+  const stat2name = "saved";
 
   const newButtonLink = "/new";
   const newButtonText = "New Template";

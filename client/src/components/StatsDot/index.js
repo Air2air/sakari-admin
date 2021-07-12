@@ -9,6 +9,9 @@ import {
   blueGrey,
 } from "@material-ui/core/colors";
 
+
+const dotSize = 26
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 110,
@@ -16,21 +19,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   statsdiv: {
-    height: 32,
+    height: dotSize,
     padding: 0,
     fontWeight: "bold",
     margin: 5
-
   },
   circle: {
-    height: 32,
+    height: dotSize,
     width: 'auto',
-    minWidth:32,
-    borderRadius: 50,
+    minWidth:dotSize,
+    borderRadius: dotSize,
     fontWeight: "bold",
     fontSize: 16,
     color: "#FFF",
-    marginRight: 10,
+    marginLeft: 6,
+    marginRight: 5,
     paddingLeft:6,
     paddingRight:6,
   },
@@ -44,11 +47,11 @@ export default function StatsDot(props) {
   const classes = useStyles();
 
   if (props.status === "default") {
-    dotColor = blueGrey[300];
+    dotColor = blueGrey[400];
   } else if (props.status === "success") {
     dotColor = green[400];
   } else if (props.status === "warning") {
-    dotColor = orange[600];
+    dotColor = orange[500];
   } else if (props.status === "danger") {
     dotColor = red[400];
   } else {

@@ -1,6 +1,4 @@
-import blue from "@material-ui/core/colors/blue";
-import green from "@material-ui/core/colors/green";
-import red from "@material-ui/core/colors/red";
+import {blue, red, green} from "@material-ui/core/colors";
 import { createSlice } from '@reduxjs/toolkit';
 
 const primaryColor = blue;
@@ -33,7 +31,7 @@ export const settings = createSlice({
   initialState: {
     theme: defaultTheme,
     darkMode: false,
-    colorsSwaped: false
+    colorsSwapped: false
   },
   reducers: {
     toggleThemeMode: (state, action) => {
@@ -63,8 +61,8 @@ export const settings = createSlice({
       state.value = action.payload;
     },
     swapThemeColors: (state, action) => {
-      if (action.payload) { // colorsSwaped
-        state.colorsSwaped = true;
+      if (action.payload) { // colorsSwapped
+        state.colorsSwapped = true;
         state.theme = {
             ...themeConfig,
             palette: {
@@ -74,7 +72,7 @@ export const settings = createSlice({
             }
           };
       } else {
-        state.colorsSwaped = false;
+        state.colorsSwapped = false;
         state.theme = {
           ...themeConfig,
           palette: {
@@ -92,7 +90,7 @@ export const { toggleThemeMode, swapThemeColors } = settings.actions;
 
 export const isDarkMode = state => state.settings.darkMode;
 
-export const isColorSwaped = state => state.settings.colorsSwaped;
+export const isColorSwaped = state => state.settings.colorsSwapped;
 
 export const getTheme = state => state.settings.theme;
 

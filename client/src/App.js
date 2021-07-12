@@ -10,7 +10,6 @@ import Messages from "./pages/Messages/";
 import Contacts from "./pages/Contacts";
 import Campaigns from "./pages/Campaigns";
 import Templates from "./pages/Templates";
-import Alerts from "./pages/Alerts/Alerts";
 import Integrations from "./pages/Integrations";
 import Settings from "./pages/Settings";
 
@@ -59,7 +58,6 @@ export default function App() {
         <Router>
           <Switch>
             <DashboardRoute exact path="/" component={Home}/>
-            <DashboardRoute path="/alerts" component={Alerts} />
             <DashboardRoute path="/messages" component={Messages} />
             <DashboardRoute path="/contacts" component={Contacts} />
             <DashboardRoute path="/campaigns" component={Campaigns} />

@@ -32,7 +32,7 @@ export default function DashCard(props) {
   const classes = useStyles();
   return (
     <Link to={props.link} style={{ textDecoration: "none" }}>
-      <Card className={classes.root} m={2} elevation={0}>
+      <Card className={classes.root} elevation={1}>
         <Box
           display="flex"
           flexDirection="row"
@@ -48,7 +48,7 @@ export default function DashCard(props) {
             <Typography color="textSecondary">{props.explain}</Typography>
           </CardContent>
 
-          <Box display="flex" flexDirection="column" className={classes.root}>
+          <Box display="flex" flexDirection="column" >
             <StatsDot
               status={props.stat1status}
               statCount={props.stat1count}

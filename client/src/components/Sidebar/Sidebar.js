@@ -8,7 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Badge from "@material-ui/core/Badge";
 import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -18,7 +17,7 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 
-const drawerWidth = 240;
+const drawerWidth = 230;
 
 const styles = (theme) => ({
   drawerPaper: {
@@ -46,6 +45,8 @@ const styles = (theme) => ({
 
 const Sidebar = (props) => {
   const { open, classes } = props;
+  let errorIntegrations = true;
+
   return (
     <Drawer
       variant="permanent"
@@ -58,11 +59,11 @@ const Sidebar = (props) => {
       open={open}
     >
       <List>
-        <br/>
+        <br />
         <Link to="/" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <HomeIcon style={{ color: blue[500] }}/>
+              <HomeIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Dashboard" />
           </ListItem>
@@ -71,7 +72,7 @@ const Sidebar = (props) => {
         <Link to="/messages" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <SendIcon style={{ color: blue[500] }}/>
+              <SendIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Messages" />
           </ListItem>
@@ -80,7 +81,7 @@ const Sidebar = (props) => {
         <Link to="/contacts" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <GroupIcon style={{ color: blue[500] }}/>
+              <GroupIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Contacts" />
           </ListItem>
@@ -89,7 +90,7 @@ const Sidebar = (props) => {
         <Link to="/campaigns" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <ForumIcon style={{ color: blue[500] }}/>
+              <ForumIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Campaigns" />
           </ListItem>
@@ -98,7 +99,7 @@ const Sidebar = (props) => {
         <Link to="/templates" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <DashboardIcon style={{ color: blue[500] }}/>
+              <DashboardIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Templates" />
           </ListItem>
@@ -106,28 +107,27 @@ const Sidebar = (props) => {
 
         <Link to="/integrations" style={{ textDecoration: "none" }}>
           <ListItem button>
-            <ListItemIcon>
-              <AccountTreeIcon style={{ color: blue[500] }}/>
-            </ListItemIcon>
-            <ListItemText style={{ color: "#555" }} primary="Integrations" />
-          </ListItem>
-        </Link>
 
-        <Link to="/alerts" style={{ textDecoration: "none" }}>
-          <ListItem button>
+            {errorIntegrations === true ? 
             <ListItemIcon>
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon style={{ color: blue[500] }}/>
+              <Badge badgeContent={1} color="error">
+                <AccountTreeIcon style={{ color: blue[500] }} />
               </Badge>
-            </ListItemIcon>
-            <ListItemText style={{ color: "#555" }} primary="Alerts" />
+               </ListItemIcon>
+            : 
+              <ListItemIcon>
+                <AccountTreeIcon style={{ color: blue[500] }} />
+              </ListItemIcon>
+            }
+
+            <ListItemText style={{ color: "#555" }} primary="Integrations" />
           </ListItem>
         </Link>
 
         <Link to="/settings" style={{ textDecoration: "none" }}>
           <ListItem button>
             <ListItemIcon>
-              <SettingsIcon style={{ color: blue[500] }}/>
+              <SettingsIcon style={{ color: blue[500] }} />
             </ListItemIcon>
             <ListItemText style={{ color: "#555" }} primary="Settings" />
           </ListItem>

@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import DashCard from "../../components/DashCard";
 import TitleBar from "../../components/TitleBar";
-import StatsDot from "../../components/StatsDot";
-import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,7 +102,7 @@ const rows = [
     "running",
     "primary",
     1,
-    "issue",
+    "problem",
     "danger"
   ),
 ];
@@ -140,25 +138,25 @@ export default function Home(props) {
           newButtonLink={newButtonLink}
           newButtonText={newButtonText}
         />
-      <Grid container spacing={4}>
-        {rows.map((row) => (
-          <Grid item xs={6} key={row.link}>
-            <DashCard
-              link={row.link}
-              subtitle={row.subtitle}
-              title={row.title}
-              explain={row.explain}
-              stat1count={row.stat1count}
-              stat1name={row.stat1name}
-              stat1status={row.stat1status}
-              stat2count={row.stat2count}
-              stat2name={row.stat2name}
-              stat2status={row.stat2status}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+        <Grid container spacing={4}>
+          {rows.map((row) => (
+            <Grid item xs={6} key={row.link}>
+              <DashCard
+                link={row.link}
+                subtitle={row.subtitle}
+                title={row.title}
+                explain={row.explain}
+                stat1count={row.stat1count}
+                stat1name={row.stat1name}
+                stat1status={row.stat1status}
+                stat2count={row.stat2count}
+                stat2name={row.stat2name}
+                stat2status={row.stat2status}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </>
   );
 }

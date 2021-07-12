@@ -6,8 +6,6 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
-import TitleRightSide from "../../components/TitleRightSide";
-import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ["Select campaign settings", "Create an ad group", "Create an ad"];
+  return ["Contacts", "Message", "Review and Send"];
 }
 
 function getStepContent(step) {
@@ -43,9 +41,8 @@ function getStepContent(step) {
 }
 
 export default function Messages() {
-
-  const pageIcon = "Messages"
-  const pageTitle = "Messages"
+  const pageIcon = "Messages";
+  const pageTitle = "Messages";
   const classes = useStyles();
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -95,12 +92,12 @@ export default function Messages() {
   };
 
   const stat1count = 3;
-  const stat1status ="danger";
-  const stat1name = " problems";
+  const stat1status = "success";
+  const stat1name = "saved";
 
-  const stat2count = 0;
-  const stat2status ="danger";
-  const stat2name = " problems";
+  const stat2count = 32;
+  const stat2status = "default";
+  const stat2name = "sent";
 
   const newButtonLink = "/new";
   const newButtonText = "New Message";
@@ -120,72 +117,72 @@ export default function Messages() {
           newButtonLink={newButtonLink}
           newButtonText={newButtonText}
         />
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
+        <Stepper activeStep={activeStep} elevation={1}>
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </Typography>
+          })}
+        </Stepper>
+        <div>
+          {activeStep === steps.length ? (
             <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                Back
+              <Typography className={classes.instructions}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <Button onClick={handleReset} className={classes.button}>
+                Reset
               </Button>
-              {isStepOptional(activeStep) && (
+            </div>
+          ) : (
+            <div>
+              <Typography className={classes.instructions}>
+                {getStepContent(activeStep)}
+              </Typography>
+              <div>
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  className={classes.button}
+                >
+                  Back
+                </Button>
+                {isStepOptional(activeStep) && (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleSkip}
+                    className={classes.button}
+                  >
+                    Skip
+                  </Button>
+                )}
+
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={handleSkip}
+                  onClick={handleNext}
                   className={classes.button}
                 >
-                  Skip
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
                 </Button>
-              )}
-
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 }

@@ -32,13 +32,13 @@ export default function Contacts() {
   const pageTitle = "Contacts";
   const classes = useStyles();
 
-  const stat1count = 11223;
-  const stat1status ="danger";
-  const stat1name = " problems";
+  const stat1count = 20;
+  const stat1status = "success";
+  const stat1name = "active";
 
-  const stat2count = 0;
-  const stat2status ="danger";
-  const stat2name = " problems";
+  const stat2count = 230;
+  const stat2status = "default";
+  const stat2name = "total";
 
   const newButtonLink = "/new";
   const newButtonText = "New Contact";
