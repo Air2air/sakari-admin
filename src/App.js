@@ -22,7 +22,7 @@ const NotFound = () => {
   return <div>NotFound</div>;
 };
 
-const DashboardRoute = ({ component: Component, ...rest }) => {
+const MainRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -57,13 +57,13 @@ export default function App() {
       <div style={{ height: "100vh" }}>
         <Router>
           <Switch>
-            <DashboardRoute exact path="/" component={Home}/>
-            <DashboardRoute path="/messages" component={Messages} />
-            <DashboardRoute path="/contacts" component={Contacts} />
-            <DashboardRoute path="/campaigns" component={Campaigns} />
-            <DashboardRoute path="/templates" component={Templates} />
-            <DashboardRoute path="/integrations" component={Integrations} />
-            <DashboardRoute path="/settings" component={Settings} />
+            <MainRoute exact path="/" component={Home}/>
+            <MainRoute path="/messages" component={Messages} />
+            <MainRoute path="/contacts" component={Contacts} />
+            <MainRoute path="/campaigns" component={Campaigns} />
+            <MainRoute path="/templates" component={Templates} />
+            <MainRoute path="/integrations" component={Integrations} />
+            <MainRoute path="/settings" component={Settings} />
             <EmptyRoute component={NotFound} />
           </Switch>
         </Router>

@@ -48,10 +48,10 @@ const runningRows = [
     "Gmail",
     "11.png",
     3,
-    "sent",
+    "requests",
     "primary",
     1,
-    "Error",
+    "send error",
     "danger"
   ),
   createData(
@@ -60,7 +60,7 @@ const runningRows = [
     "16.png",
     4,
     "requests",
-    "success",
+    "primary",
     3,
     "sends",
     "success"
@@ -71,7 +71,7 @@ const runningRows = [
     "23.png",
     15,
     "requests",
-    "success",
+    "primary",
     3,
     "sends",
     "success"

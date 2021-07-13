@@ -1,31 +1,47 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import TitleBar from "../../components/TitleBar";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
+  root: {
+    width: "100%",
+    fontSize: "14px",
+  },
+  heading: {
+    fontSize: "15px",
+    fontWeight: 600,
+    width: 180,
+  },
+  messages: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 120,
+  },
+  created: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 180,
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, messages, created) {
+  return { name, messages, created };
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  createData("Lorem Ipsum", "63 messages", "12/29/2020"),
+  createData("Ipsum Lorem", "21 messages", "6/19/2021"),
+  createData("Lorem Ipsum", "2 messages", "5/2/2020"),
+  createData("Ipsum Lorem", "1 messages", "7/16/2021"),
+  createData("Lorem Ipsum", "53 messages", "12/15/2020"),
+  createData("Ipsum Lorem", "65 messages", "6/14/2020"),
 ];
-
 export default function Campaigns() {
   const pageIcon = "Campaigns";
   const pageTitle = "Campaigns";
@@ -57,27 +73,24 @@ export default function Campaigns() {
           newButtonLink={newButtonLink}
           newButtonText={newButtonText}
         />
-        <TableContainer component={Paper}>
-          <Table
-            className={classes.table}
-            elevation={1}
-            aria-label="simple table"
-          >
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {rows.map((row) => (
+          <Accordion >
+            <AccordionSummary 
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography className={classes.heading}>{row.name}</Typography>
+              <Typography className={classes.messages}>
+                {row.messages}
+              </Typography>
+              <Typography className={classes.created}>{row.created}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>Edit/delete section down here.</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </div>
     </>
   );

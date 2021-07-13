@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    padding: 30,
+    padding: 24,
   },
   text_section: {
     padding: 0,
@@ -24,8 +24,8 @@ const useStyles = makeStyles({
     color: "#42a5f5",
   },
   company_thumb: {
-    height: 60,
-    width: 60,
+    height: 50,
+    width: 50,
     borderRadius: 5,
   },
 });
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function IntegrationsCard(props) {
   const classes = useStyles();
   return (
-    <Link to={props.link} style={{ textDecoration: "none" }} >
+    <Link to={props.link} style={{ textDecoration: "none" }}>
       <Card className={classes.root} m={2} elevation={1}>
         <Box className={classes.card_content}>
           <Typography className={classes.subtitle} gutterBottom>
@@ -47,24 +47,23 @@ export default function IntegrationsCard(props) {
           >
             <CardContent className={classes.text_section}>
               <img
-                className={classes.company_thumb}
-                src={ `./../../../images/company/${props.thumb}` }
-                height="36"
-                alt="Sakari"
+              className={classes.company_thumb}
+                alt={props.subtitle}
+                src={require(`./../../images/company/${props.thumb}`)}
               />
             </CardContent>
-            <Box display="flex" flexDirection="column" >
-            <StatsDot
-              status={props.stat1status}
-              statCount={props.stat1count}
-              statName={props.stat1name}
-            />
-            <StatsDot
-              status={props.stat2status}
-              statCount={props.stat2count}
-              statName={props.stat2name}
-            />
-          </Box>
+            <Box display="flex" flexDirection="column">
+              <StatsDot
+                status={props.stat1status}
+                statCount={props.stat1count}
+                statName={props.stat1name}
+              />
+              <StatsDot
+                status={props.stat2status}
+                statCount={props.stat2count}
+                statName={props.stat2name}
+              />
+            </Box>
           </Box>
         </Box>
       </Card>

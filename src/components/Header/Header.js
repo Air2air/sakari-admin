@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/Person";
 import { withStyles } from "@material-ui/core/styles";
+import Logo from "./../../images/sakari_logo_w.svg"
 
 const styles = (theme) => ({
   toolbarRoot: {
@@ -17,7 +18,7 @@ const styles = (theme) => ({
   title: {
     flexGrow: 1,
   },
-  Logo: {
+  logo: {
     flexGrow: 1,
   },
 });
@@ -40,8 +41,8 @@ const Header = (props) => {
           <MenuIcon fontSize="large" />
         </IconButton>
         <img
-          className={classes.Logo}
-          src="./../../../images/sakari_logo_w.svg"
+          className={classes.logo}
+          src={Logo}
           height="36"
           alt="Sakari"
         />
