@@ -14,10 +14,15 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AddIcon from "@material-ui/icons/Add";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+  },
+  message_window: {
+    marginBottom: 30,
   },
   button: {
     marginRight: theme.spacing(1),
@@ -41,6 +46,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 400,
     width: 180,
   },
+  button_box: {
+    justifyContent: "flex-end",
+  },
+  new_button: {
+    width: "190px",
+  },
 }));
 
 function getSteps() {
@@ -56,7 +67,7 @@ function getStepContent(step) {
     case 2:
       return "Preview message.";
     default:
-      return "Unknown step";
+      return "Error default";
   }
 }
 
@@ -82,10 +93,10 @@ export default function Messages() {
   };
 
   /* --- Collapse window ---*/
-  const [checked, setChecked] = React.useState(false);
+  const [opened, setOpened] = React.useState(false);
 
   const handleChange = () => {
-    setChecked((prev) => !prev);
+    setOpened((prev) => !prev);
   };
 
   const rows = [
@@ -105,7 +116,6 @@ export default function Messages() {
   const stat2status = "default";
   const stat2name = "sent";
 
-  const newButtonLink = "handleChange";
   const newButtonText = "New Message";
 
   return (
@@ -127,24 +137,36 @@ export default function Messages() {
             stat2count={stat2count}
             stat2status={stat2status}
             stat2name={stat2name}
-
           />
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            value={newButtonLink}
-            onClick={() => handleChange()}
-          >
-            {newButtonText}
-          </Button>
+          {!opened ? (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleChange()}
+              endIcon={<AddIcon />}
+              className={classes.new_button}
+            >
+              {newButtonText}
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="default"
+              onClick={() => handleChange()}
+              endIcon={<ExpandLessIcon />}
+              className={classes.new_button}
+            >
+              Cancel
+            </Button>
+          )}
         </Box>
-        <Collapse in={checked}>
+        <Collapse in={opened}>
           <Paper
             display="flex"
             flexDirection="column"
             alignItems="center"
             elevation={1}
+            className={classes.message_window}
           >
             <Stepper activeStep={activeStep} elevation={0}>
               {steps.map((label, index) => {
@@ -173,7 +195,11 @@ export default function Messages() {
                     Confirmation before sending
                   </Typography>
 
-                  <Box display="flex" alignItems="center" justifyContent="end">
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    className={classes.button_box}
+                  >
                     <Button
                       variant="contained"
                       disabled={activeStep === 0}
@@ -202,7 +228,11 @@ export default function Messages() {
                     {getStepContent(activeStep)}
                   </Typography>
 
-                  <Box display="flex" alignItems="center" justifyContent="end">
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    className={classes.button_box}
+                  >
                     <Button
                       variant="contained"
                       disabled={activeStep === 0}

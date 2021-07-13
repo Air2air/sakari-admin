@@ -12,6 +12,8 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
+import AddIcon from '@material-ui/icons/Add';
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 const useStyles = makeStyles({
   root: {
@@ -35,7 +37,13 @@ const useStyles = makeStyles({
   paper: {
     padding: 24,
     marginBottom: 30,
-  }
+  },
+  new_button: {
+    width: "190px",
+  },
+  button_box: {
+    justifyContent: "flex-end",
+  },
 });
 
 
@@ -124,10 +132,10 @@ export default function Integrations() {
   const newButtonText = "New Integration";
 
   /* --- Collapse window ---*/
-  const [checked, setChecked] = React.useState(false);
+  const [opened, setOpened] = React.useState(false);
 
   const handleChange = () => {
-    setChecked((prev) => !prev);
+    setOpened((prev) => !prev);
   };
 
   return (
@@ -150,17 +158,45 @@ export default function Integrations() {
             stat2status={stat2status}
             stat2name={stat2name}
           />
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            onClick={() => handleChange()}
-          >
-            {newButtonText}
-          </Button>
+          {!opened ? (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleChange()}
+              endIcon={<AddIcon />}
+              className={classes.new_button}
+            >
+              {newButtonText}
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="default"
+              onClick={() => handleChange()}
+              endIcon={<ExpandLessIcon />}
+              className={classes.new_button}
+            >
+              Cancel
+            </Button>
+          )}
         </Box>
-        <Collapse in={checked}>
-          <Paper className={classes.paper}>Doodle</Paper>
+        <Collapse in={opened}>
+                    <Paper className={classes.paper}>
+            Forms go in here
+            <Box
+              display="flex"
+              alignItems="center"
+              className={classes.button_box}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleChange()}
+              >
+                Submit
+              </Button>
+            </Box>
+          </Paper>
         </Collapse>
         <Grid container spacing={4}>
           {runningRows.map((runningRow) => (

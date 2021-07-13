@@ -8,16 +8,13 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Switch from "@material-ui/core/Switch";
 import PaletteIcon from "@material-ui/icons/Palette";
-import CompareArrowsIcon from "@material-ui/icons/CompareArrows";
 import { useSelector, useDispatch } from "react-redux";
 import TitleBar from "../../components/TitleBar";
 
 
 import {
   toggleThemeMode,
-  swapThemeColors,
-  isDarkMode,
-  isColorSwaped,
+  isDarkMode
 } from "./settingsReducer";
 
 
@@ -25,10 +22,8 @@ export default function Settings() {
 
   const pageIcon = "Settings"
   const pageTitle = "Settings"
-  // const classes = useStyles();
 
   const darkMode = useSelector(isDarkMode);
-  const colorSwaped = useSelector(isColorSwaped);
 
   const dispatch = useDispatch();
 
@@ -50,18 +45,7 @@ export default function Settings() {
                 />
               </ListItemSecondaryAction>
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <CompareArrowsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Swap Colors" />
-              <ListItemSecondaryAction>
-                <Switch
-                  onChange={(e, checked) => dispatch(swapThemeColors(checked))}
-                  checked={colorSwaped}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
+
           </List>
         </CardContent>
       </Card>
