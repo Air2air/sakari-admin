@@ -1,8 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import SendIcon from "@material-ui/icons/Send";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -37,76 +35,53 @@ export default function TitleBar(props) {
       <Box
         display="flex"
         flexDirection="row"
-        justifyContent="space-between"
-        alignItems="baseline"
+        alignItems="center"
+        justifyContent="start"
         className={classes.root}
       >
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="start"
-          className={classes.root}
-        >
-          <Typography variant="h5" className={classes.title_block}>
-            {props.pageIcon === "Home" && (
-              <HomeIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Messages" && (
-              <SendIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Contacts" && (
-              <GroupIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Campaigns" && (
-              <ForumIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Templates" && (
-              <DashboardIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Integrations" && (
-              <AccountTreeIcon
-                fontSize="small"
-                className={classes.title_icon}
-              />
-            )}
-            {props.pageIcon === "Settings" && (
-              <SettingsIcon fontSize="small" className={classes.title_icon} />
-            )}
-            {props.pageIcon === "Alerts" && (
-              <NotificationsIcon
-                fontSize="small"
-                className={classes.title_icon}
-              />
-            )}
-            {props.pageTitle}
-          </Typography>
-          {props.stat1count > 0 && (
-            <StatsDot
-              status={props.stat1status}
-              statCount={props.stat1count}
-              statName={props.stat1name}
+        <Typography variant="h5" className={classes.title_block}>
+          {props.pageIcon === "Home" && (
+            <HomeIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Messages" && (
+            <SendIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Contacts" && (
+            <GroupIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Campaigns" && (
+            <ForumIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Templates" && (
+            <DashboardIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Integrations" && (
+            <AccountTreeIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Settings" && (
+            <SettingsIcon fontSize="small" className={classes.title_icon} />
+          )}
+          {props.pageIcon === "Alerts" && (
+            <NotificationsIcon
+              fontSize="small"
+              className={classes.title_icon}
             />
           )}
-          {props.stat2count > 0 && (
-            <StatsDot
-              status={props.stat2status}
-              statCount={props.stat2count}
-              statName={props.stat2name}
-            />
-          )}
-        </Box>
-
-        {props.newButtonLink && (
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            endIcon={<AddIcon />}
-            value={props.newButtonLink}
-          >
-            {props.newButtonText}
-          </Button>
+          {props.pageTitle}
+        </Typography>
+        {props.stat1count > 0 && (
+          <StatsDot
+            status={props.stat1status}
+            statCount={props.stat1count}
+            statName={props.stat1name}
+          />
+        )}
+        {props.stat2count > 0 && (
+          <StatsDot
+            status={props.stat2status}
+            statCount={props.stat2count}
+            statName={props.stat2name}
+          />
         )}
       </Box>
     </>

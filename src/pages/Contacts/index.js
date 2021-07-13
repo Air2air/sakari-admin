@@ -1,13 +1,15 @@
-
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import TitleBar from "../../components/TitleBar";
+import Button from "@material-ui/core/Button";
+import Collapse from "@material-ui/core/Collapse";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import TitleBar from "../../components/TitleBar";
+import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   root: {
@@ -37,11 +39,11 @@ const rows = [
   { name: "Lorem Ipsum", messages: "2 somethings", created: "5/2/2020" },
   { name: "Ipsum Lorem", messages: "1 somethings", created: "7/16/2021" },
   { name: "Lorem Ipsum", messages: "53 somethings", created: "12/15/2020" },
-  { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" }
+  { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" },
 ];
 
-
 export default function Contacts() {
+
   const classes = useStyles();
   const pageIcon = "Contacts";
   const pageTitle = "Contacts";
@@ -57,21 +59,47 @@ export default function Contacts() {
   const newButtonLink = "/new";
   const newButtonText = "New Contact";
 
+
+/* --- Collapse window ---*/
+const [checked, setChecked] = React.useState(false);
+
+const handleChange = () => {
+  setChecked((prev) => !prev);
+};
+
   return (
     <>
       <div className={classes.root}>
-        <TitleBar
-          pageTitle={pageTitle}
-          pageIcon={pageIcon}
-          stat1count={stat1count}
-          stat1status={stat1status}
-          stat1name={stat1name}
-          stat2count={stat2count}
-          stat2status={stat2status}
-          stat2name={stat2name}
-          newButtonLink={newButtonLink}
-          newButtonText={newButtonText}
-        />
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="baseline"
+          className={classes.root}
+        >
+          <TitleBar
+            pageTitle={pageTitle}
+            pageIcon={pageIcon}
+            stat1count={stat1count}
+            stat1status={stat1status}
+            stat1name={stat1name}
+            stat2count={stat2count}
+            stat2status={stat2status}
+            stat2name={stat2name}
+            newButtonLink={newButtonLink}
+            newButtonText={newButtonText}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            value={newButtonLink}
+            onClick={() => handleChange()}
+          >
+            {newButtonText}
+          </Button>
+        </Box>
+        <Collapse in={checked}><Paper>Doodle</Paper></Collapse>
 
         {rows.map((row) => (
           <Accordion key={`${row.created}_${row.messages}`}>

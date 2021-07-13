@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/co
+import StepLabel from "@material-ui/core/StepLabel";
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
 import { Box, Paper } from "@material-ui/core";
