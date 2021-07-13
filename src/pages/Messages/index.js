@@ -2,14 +2,18 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
+import StepLabel from "@material-ui/co
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
 import { Box, Paper } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import Button from "@material-ui/core/Button";
 import Collapse from "@material-ui/core/Collapse";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +26,20 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(6),
   },
-  title: {
-    marginBottom: 30,
+  heading: {
+    fontSize: "15px",
+    fontWeight: 600,
+    width: 180,
+  },
+  messages: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 120,
+  },
+  created: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 180,
   },
 }));
 
@@ -72,6 +88,15 @@ export default function Messages() {
     setChecked((prev) => !prev);
   };
 
+  const rows = [
+    { name: "Lorem Ipsum", messages: "63 somethings", created: "12/29/2020" },
+    { name: "Ipsum Lorem", messages: "21 somethings", created: "6/19/2021" },
+    { name: "Lorem Ipsum", messages: "2 somethings", created: "5/2/2020" },
+    { name: "Ipsum Lorem", messages: "1 somethings", created: "7/16/2021" },
+    { name: "Lorem Ipsum", messages: "53 somethings", created: "12/15/2020" },
+    { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" },
+  ];
+
   const stat1count = 3;
   const stat1status = "success";
   const stat1name = "saved";
@@ -86,29 +111,35 @@ export default function Messages() {
   return (
     <>
       <div className={classes.root}>
-        <TitleBar
-          pageTitle={pageTitle}
-          pageIcon={pageIcon}
-          stat1count={stat1count}
-          stat1status={stat1status}
-          stat1name={stat1name}
-          stat2count={stat2count}
-          stat2status={stat2status}
-          stat2name={stat2name}
-          newButtonLink={newButtonLink}
-          newButtonText={newButtonText}
-        />
-
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          value={newButtonLink}
-          onClick={() => handleChange()}
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="baseline"
+          className={classes.root}
         >
-          {newButtonText}
-        </Button>
-
+          <TitleBar
+            pageTitle={pageTitle}
+            pageIcon={pageIcon}
+            stat1count={stat1count}
+            stat1status={stat1status}
+            stat1name={stat1name}
+            stat2count={stat2count}
+            stat2status={stat2status}
+            stat2name={stat2name}
+            newButtonLink={newButtonLink}
+            newButtonText={newButtonText}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            value={newButtonLink}
+            onClick={() => handleChange()}
+          >
+            {newButtonText}
+          </Button>
+        </Box>
         <Collapse in={checked}>
           <Paper
             display="flex"
@@ -200,6 +231,25 @@ export default function Messages() {
             </Box>
           </Paper>
         </Collapse>
+
+        {rows.map((row) => (
+          <Accordion key={`${row.created}_${row.messages}`}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id={row.created}
+            >
+              <Typography className={classes.heading}>{row.name}</Typography>
+              <Typography className={classes.messages}>
+                {row.messages}
+              </Typography>
+              <Typography className={classes.created}>{row.created}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>Edit/delete section down here.</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </div>
     </>
   );
