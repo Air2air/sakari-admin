@@ -7,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
 import { Box, Paper } from "@material-ui/core";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(6),
   },
   title: {
     marginBottom: 30,
@@ -109,7 +112,7 @@ export default function Messages() {
 
           <Box
             display="flex"
-            alignItems="center"
+            flexDirection="column"
             paddingTop={2}
             paddingRight={8}
             paddingBottom={4}
@@ -117,42 +120,59 @@ export default function Messages() {
             elevation={0}
           >
             {activeStep === steps.length ? (
-              <div>
-                <Typography className={classes.instructions}>
-                  Confirmation before sending
-                </Typography>
+              <>
+
+                  <Typography className={classes.instructions}>
+                    Confirmation before sending
+                  </Typography>
+
+                  {/* <TextField
+                    fullWidth
+                    id="outlined-multiline-static"
+                    label="Multiline"
+                    multiline
+                    rows={4}
+                    defaultValue="Default Value"
+                    variant="outlined"
+                  /> */}
 
                 <Box display="flex" alignItems="center" justifyContent="end">
                   <Button
-                    contained
+                    variant="contained"
                     disabled={activeStep === 0}
                     onClick={handleBack}
                     size="large"
                     className={classes.button}
+                    startIcon={<NavigateBeforeIcon />}
                   >
                     Back
                   </Button>
                   <Button
-                    color="success"
+                    variant="contained"
+                    color="primary"
                     onClick={handleReset}
                     size="large"
                     className={classes.button}
+                    endIcon={<NavigateNextIcon />}
                   >
                     Send Message
                   </Button>
                 </Box>
-              </div>
+              </>
             ) : (
-              <div>
+              <>
                 <Typography className={classes.instructions}>
                   {getStepContent(activeStep)}
                 </Typography>
+
                 <Box display="flex" alignItems="center" justifyContent="end">
                   <Button
+                    variant="contained"
                     disabled={activeStep === 0}
                     onClick={handleBack}
                     size="large"
                     className={classes.button}
+                    startIcon={<NavigateBeforeIcon />}
                   >
                     Back
                   </Button>
@@ -163,11 +183,12 @@ export default function Messages() {
                     onClick={handleNext}
                     size="large"
                     className={classes.button}
+                    endIcon={<NavigateNextIcon />}
                   >
                     {activeStep === steps.length - 1 ? "Send" : "Next"}
                   </Button>
                 </Box>
-              </div>
+              </>
             )}
           </Box>
         </Paper>
