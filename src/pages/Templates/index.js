@@ -31,6 +31,10 @@ const useStyles = makeStyles({
     fontWeight: 400,
     width: 180,
   },
+  paper: {
+    padding: 24,
+    marginBottom: 30,
+  },
 });
 
 const rows = [
@@ -94,7 +98,7 @@ export default function Contacts() {
           </Button>
         </Box>
         <Collapse in={checked}>
-          <Paper>Doodle</Paper>
+          <Paper className={classes.paper}>Doodle</Paper>
         </Collapse>
 
         {rows.map((row) => (

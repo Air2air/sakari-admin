@@ -31,7 +31,12 @@ const useStyles = makeStyles({
     fontWeight: 400,
     width: 180,
   },
+  paper: {
+    padding: 24,
+    marginBottom: 30,
+  },
 });
+
 
 const rows = [
   { name: "Lorem Ipsum", messages: "63 somethings", created: "12/29/2020" },
@@ -84,8 +89,7 @@ export default function Campaigns() {
             stat2count={stat2count}
             stat2status={stat2status}
             stat2name={stat2name}
-            newButtonLink={newButtonLink}
-            newButtonText={newButtonText}
+
           />
           <Button
             variant="contained"
@@ -98,7 +102,7 @@ export default function Campaigns() {
           </Button>
         </Box>
         <Collapse in={checked}>
-          <Paper>Doodle</Paper>
+          <Paper className={classes.paper}>Doodle</Paper>
         </Collapse>
 
         {rows.map((row) => (

@@ -13,19 +13,31 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
+  heading: {
+    fontSize: "15px",
+    fontWeight: 600,
+    width: 180,
+  },
+  messages: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 120,
+  },
+  created: {
+    fontSize: "14px",
+    fontWeight: 400,
+    width: 180,
+  },
   paper: {
-    padding: theme.spacing(4),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  title: {
+    padding: 24,
     marginBottom: 30,
-  },
-}));
+  }
+});
+
 
 function createData(
   link,
@@ -87,7 +99,6 @@ const runningRows = [
   ),
 ];
 
-
 const rows = [
   { name: "Lorem Ipsum", messages: "63 somethings", created: "12/29/2020" },
   { name: "Ipsum Lorem", messages: "21 somethings", created: "6/19/2021" },
@@ -96,8 +107,6 @@ const rows = [
   { name: "Lorem Ipsum", messages: "53 somethings", created: "12/15/2020" },
   { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" },
 ];
-
-
 
 export default function Integrations() {
   const pageIcon = "Integrations";
@@ -115,11 +124,11 @@ export default function Integrations() {
   const newButtonText = "New Integration";
 
   /* --- Collapse window ---*/
-const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
 
-const handleChange = () => {
-  setChecked((prev) => !prev);
-};
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
 
   return (
     <>
@@ -150,7 +159,9 @@ const handleChange = () => {
             {newButtonText}
           </Button>
         </Box>
-        <Collapse in={checked}><Paper>Doodle</Paper></Collapse>
+        <Collapse in={checked}>
+          <Paper className={classes.paper}>Doodle</Paper>
+        </Collapse>
         <Grid container spacing={4}>
           {runningRows.map((runningRow) => (
             <Grid item xs={4} key={runningRow.link}>
@@ -170,25 +181,21 @@ const handleChange = () => {
         </Grid>
       </div>
       {rows.map((row) => (
-          <Accordion key={`${row.created}_${row.messages}`}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id={row.created}
-            >
-              <Typography className={classes.heading}>{row.name}</Typography>
-              <Typography className={classes.messages}>
-                {row.messages}
-              </Typography>
-              <Typography className={classes.created}>{row.created}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Edit/delete section down here.</Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-
+        <Accordion key={`${row.created}_${row.messages}`}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id={row.created}
+          >
+            <Typography className={classes.heading}>{row.name}</Typography>
+            <Typography className={classes.messages}>{row.messages}</Typography>
+            <Typography className={classes.created}>{row.created}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>Edit/delete section down here.</Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </>
   );
 }
-

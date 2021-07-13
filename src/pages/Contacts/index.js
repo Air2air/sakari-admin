@@ -31,6 +31,10 @@ const useStyles = makeStyles({
     fontWeight: 400,
     width: 180,
   },
+  paper: {
+    padding: 24,
+    marginBottom: 30,
+  },
 });
 
 const rows = [
@@ -86,8 +90,7 @@ const handleChange = () => {
             stat2count={stat2count}
             stat2status={stat2status}
             stat2name={stat2name}
-            newButtonLink={newButtonLink}
-            newButtonText={newButtonText}
+
           />
           <Button
             variant="contained"
@@ -99,7 +102,9 @@ const handleChange = () => {
             {newButtonText}
           </Button>
         </Box>
-        <Collapse in={checked}><Paper>Doodle</Paper></Collapse>
+        <Collapse in={checked}>
+          <Paper className={classes.paper}>Doodle</Paper>
+        </Collapse>
 
         {rows.map((row) => (
           <Accordion key={`${row.created}_${row.messages}`}>

@@ -10,6 +10,10 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     padding: 24,
+    marginBottom: 30,
+  },
+  card: {
+    textDecoration: "none",
   },
   text_section: {
     padding: 0,
@@ -33,8 +37,8 @@ const useStyles = makeStyles({
 export default function IntegrationsCard(props) {
   const classes = useStyles();
   return (
-    <Link to={props.link} style={{ textDecoration: "none" }}>
-      <Card className={classes.root} m={2} elevation={1}>
+    <Link to={props.link} className={classes.card}>
+      <Card className={classes.root} elevation={1}>
         <Box className={classes.card_content}>
           <Typography className={classes.subtitle} gutterBottom>
             {props.subtitle}
@@ -47,7 +51,7 @@ export default function IntegrationsCard(props) {
           >
             <CardContent className={classes.text_section}>
               <img
-              className={classes.company_thumb}
+                className={classes.company_thumb}
                 alt={props.subtitle}
                 src={require(`./../../images/company/${props.thumb}`)}
               />

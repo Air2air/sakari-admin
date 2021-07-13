@@ -127,8 +127,7 @@ export default function Messages() {
             stat2count={stat2count}
             stat2status={stat2status}
             stat2name={stat2name}
-            newButtonLink={newButtonLink}
-            newButtonText={newButtonText}
+
           />
           <Button
             variant="contained"
