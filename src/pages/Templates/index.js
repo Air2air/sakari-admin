@@ -31,18 +31,15 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, messages, created) {
-  return { name, messages, created };
-}
-
 const rows = [
-  createData("Lorem Ipsum", "63 messages", "12/29/2020"),
-  createData("Ipsum Lorem", "21 messages", "6/19/2021"),
-  createData("Lorem Ipsum", "2 messages", "5/2/2020"),
-  createData("Ipsum Lorem", "1 messages", "7/16/2021"),
-  createData("Lorem Ipsum", "53 messages", "12/15/2020"),
-  createData("Ipsum Lorem", "65 messages", "6/14/2020"),
+  { name: "Lorem Ipsum", messages: "63 somethings", created: "12/29/2020" },
+  { name: "Ipsum Lorem", messages: "21 somethings", created: "6/19/2021" },
+  { name: "Lorem Ipsum", messages: "2 somethings", created: "5/2/2020" },
+  { name: "Ipsum Lorem", messages: "1 somethings", created: "7/16/2021" },
+  { name: "Lorem Ipsum", messages: "53 somethings", created: "12/15/2020" },
+  { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" }
 ];
+
 
 export default function Contacts() {
   const pageIcon = "Templates";

@@ -30,15 +30,13 @@ const useStyles = makeStyles({
 });
 
 const rows = [
-  { name: "Lorem Ipsum", messages: "63 messages", created: "12/29/2020" },
-  { name: "Ipsum Lorem", messages: "21 messages", created: "6/19/2021" },
-  { name: "Lorem Ipsum", messages: "2 messages", created: "5/2/2020" },
-  { name: "Ipsum Lorem", messages: "1 messages", created: "7/16/2021" },
-  { name: "Lorem Ipsum", messages: "53 messages", created: "12/15/2020" },
-  { name: "Ipsum Lorem", messages: "65 messages", created: "6/14/2020" },
+  { name: "Lorem Ipsum", messages: "63 somethings", created: "12/29/2020" },
+  { name: "Ipsum Lorem", messages: "21 somethings", created: "6/19/2021" },
+  { name: "Lorem Ipsum", messages: "2 somethings", created: "5/2/2020" },
+  { name: "Ipsum Lorem", messages: "1 somethings", created: "7/16/2021" },
+  { name: "Lorem Ipsum", messages: "53 somethings", created: "12/15/2020" },
+  { name: "Ipsum Lorem", messages: "65 somethings", created: "6/14/2020" }
 ];
-
-rows.push("mango");
 
 export default function Campaigns() {
   const pageIcon = "Campaigns";
@@ -71,6 +69,10 @@ export default function Campaigns() {
           newButtonLink={newButtonLink}
           newButtonText={newButtonText}
         />
+
+
+
+
         {rows.map((row) => (
           <Accordion key={`${row.created}_${row.messages}`}>
             <AccordionSummary

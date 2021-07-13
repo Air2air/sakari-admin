@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { Box, Paper } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-
+import Collapse from "@material-ui/core/Collapse";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +65,13 @@ export default function Messages() {
     setActiveStep(0);
   };
 
+  /* --- Collapse window ---*/
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
+
   const stat1count = 3;
   const stat1status = "success";
   const stat1name = "saved";
@@ -73,7 +80,7 @@ export default function Messages() {
   const stat2status = "default";
   const stat2name = "sent";
 
-  const newButtonLink = "";
+  const newButtonLink = "handleChange";
   const newButtonText = "New Message";
 
   return (
@@ -92,106 +99,107 @@ export default function Messages() {
           newButtonText={newButtonText}
         />
 
-        <Paper
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          elevation={1}
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          value={newButtonLink}
+          onClick={() => handleChange()}
         >
-          <Stepper activeStep={activeStep} elevation={0}>
-            {steps.map((label, index) => {
-              const stepProps = {};
-              const labelProps = {};
-              return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
+          {newButtonText}
+        </Button>
 
-          <Box
+        <Collapse in={checked}>
+          <Paper
             display="flex"
             flexDirection="column"
-            paddingTop={2}
-            paddingRight={8}
-            paddingBottom={4}
-            paddingLeft={8}
-            elevation={0}
+            alignItems="center"
+            elevation={1}
           >
-            {activeStep === steps.length ? (
-              <>
+            <Stepper activeStep={activeStep} elevation={0}>
+              {steps.map((label, index) => {
+                const stepProps = {};
+                const labelProps = {};
+                return (
+                  <Step key={label} {...stepProps}>
+                    <StepLabel {...labelProps}>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
 
+            <Box
+              display="flex"
+              flexDirection="column"
+              paddingTop={2}
+              paddingRight={8}
+              paddingBottom={4}
+              paddingLeft={8}
+              elevation={0}
+            >
+              {activeStep === steps.length ? (
+                <>
                   <Typography className={classes.instructions}>
                     Confirmation before sending
                   </Typography>
 
-                  {/* <TextField
-                    fullWidth
-                    id="outlined-multiline-static"
-                    label="Multiline"
-                    multiline
-                    rows={4}
-                    defaultValue="Default Value"
-                    variant="outlined"
-                  /> */}
+                  <Box display="flex" alignItems="center" justifyContent="end">
+                    <Button
+                      variant="contained"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      size="large"
+                      className={classes.button}
+                      startIcon={<NavigateBeforeIcon />}
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleReset}
+                      size="large"
+                      className={classes.button}
+                      endIcon={<NavigateNextIcon />}
+                    >
+                      Send Message
+                    </Button>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Typography className={classes.instructions}>
+                    {getStepContent(activeStep)}
+                  </Typography>
 
-                <Box display="flex" alignItems="center" justifyContent="end">
-                  <Button
-                    variant="contained"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    size="large"
-                    className={classes.button}
-                    startIcon={<NavigateBeforeIcon />}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleReset}
-                    size="large"
-                    className={classes.button}
-                    endIcon={<NavigateNextIcon />}
-                  >
-                    Send Message
-                  </Button>
-                </Box>
-              </>
-            ) : (
-              <>
-                <Typography className={classes.instructions}>
-                  {getStepContent(activeStep)}
-                </Typography>
+                  <Box display="flex" alignItems="center" justifyContent="end">
+                    <Button
+                      variant="contained"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      size="large"
+                      className={classes.button}
+                      startIcon={<NavigateBeforeIcon />}
+                    >
+                      Back
+                    </Button>
 
-                <Box display="flex" alignItems="center" justifyContent="end">
-                  <Button
-                    variant="contained"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    size="large"
-                    className={classes.button}
-                    startIcon={<NavigateBeforeIcon />}
-                  >
-                    Back
-                  </Button>
-
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    size="large"
-                    className={classes.button}
-                    endIcon={<NavigateNextIcon />}
-                  >
-                    {activeStep === steps.length - 1 ? "Send" : "Next"}
-                  </Button>
-                </Box>
-              </>
-            )}
-          </Box>
-        </Paper>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleNext}
+                      size="large"
+                      className={classes.button}
+                      endIcon={<NavigateNextIcon />}
+                    >
+                      {activeStep === steps.length - 1 ? "Send" : "Next"}
+                    </Button>
+                  </Box>
+                </>
+              )}
+            </Box>
+          </Paper>
+        </Collapse>
       </div>
     </>
   );
