@@ -77,11 +77,11 @@ export default function Contacts() {
         />
 
         {rows.map((row) => (
-          <Accordion>
+          <Accordion key={`${row.created}_${row.messages}`}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header"
+              id={row.created}
             >
               <Typography className={classes.heading}>{row.name}</Typography>
               <Typography className={classes.messages}>

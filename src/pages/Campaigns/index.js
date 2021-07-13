@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import TitleBar from "../../components/TitleBar";
 
-
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -30,18 +29,17 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, messages, created) {
-  return { name, messages, created };
-}
-
 const rows = [
-  createData("Lorem Ipsum", "63 messages", "12/29/2020"),
-  createData("Ipsum Lorem", "21 messages", "6/19/2021"),
-  createData("Lorem Ipsum", "2 messages", "5/2/2020"),
-  createData("Ipsum Lorem", "1 messages", "7/16/2021"),
-  createData("Lorem Ipsum", "53 messages", "12/15/2020"),
-  createData("Ipsum Lorem", "65 messages", "6/14/2020"),
+  { name: "Lorem Ipsum", messages: "63 messages", created: "12/29/2020" },
+  { name: "Ipsum Lorem", messages: "21 messages", created: "6/19/2021" },
+  { name: "Lorem Ipsum", messages: "2 messages", created: "5/2/2020" },
+  { name: "Ipsum Lorem", messages: "1 messages", created: "7/16/2021" },
+  { name: "Lorem Ipsum", messages: "53 messages", created: "12/15/2020" },
+  { name: "Ipsum Lorem", messages: "65 messages", created: "6/14/2020" },
 ];
+
+rows.push("mango");
+
 export default function Campaigns() {
   const pageIcon = "Campaigns";
   const pageTitle = "Campaigns";
@@ -74,11 +72,11 @@ export default function Campaigns() {
           newButtonText={newButtonText}
         />
         {rows.map((row) => (
-          <Accordion >
-            <AccordionSummary 
+          <Accordion key={`${row.created}_${row.messages}`}>
+            <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header"
+              id={row.created}
             >
               <Typography className={classes.heading}>{row.name}</Typography>
               <Typography className={classes.messages}>

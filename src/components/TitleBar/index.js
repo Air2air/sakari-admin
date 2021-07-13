@@ -17,7 +17,7 @@ import { blueGrey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: 10,
+    marginBottom: 20,
   },
   title_block: {
     marginRight: 30,
