@@ -6,6 +6,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import TitleBar from "../../components/TitleBar";
 import Typography from "@material-ui/core/Typography";
+import { Box, Paper } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,11 +31,11 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return "Select campaign settings...";
+      return "Select Contacts. Have not built this yet.";
     case 1:
-      return "What is an ad group anyways?";
+      return "Compose message. Have not built this yet.";
     case 2:
-      return "This is the bit I really care about!";
+      return "Preview message.";
     default:
       return "Unknown step";
   }
@@ -46,45 +47,15 @@ export default function Messages() {
   const classes = useStyles();
 
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+
   const steps = getSteps();
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
   };
 
   const handleReset = () => {
@@ -99,7 +70,7 @@ export default function Messages() {
   const stat2status = "default";
   const stat2name = "sent";
 
-  const newButtonLink = "/new";
+  const newButtonLink = "";
   const newButtonText = "New Message";
 
   return (
@@ -117,71 +88,89 @@ export default function Messages() {
           newButtonLink={newButtonLink}
           newButtonText={newButtonText}
         />
-        <Stepper activeStep={activeStep} elevation={1}>
-          {steps.map((label, index) => {
-            const stepProps = {};
-            const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+
+        <Paper
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          elevation={1}
+        >
+          <Stepper activeStep={activeStep} elevation={0}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                </Step>
               );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
-              </Typography>
-              <Button onClick={handleReset} className={classes.button}>
-                Reset
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Typography className={classes.instructions}>
-                {getStepContent(activeStep)}
-              </Typography>
+            })}
+          </Stepper>
+
+          <Box
+            display="flex"
+            alignItems="center"
+            paddingTop={2}
+            paddingRight={8}
+            paddingBottom={4}
+            paddingLeft={8}
+            elevation={0}
+          >
+            {activeStep === steps.length ? (
               <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
-                {isStepOptional(activeStep) && (
+                <Typography className={classes.instructions}>
+                  Confirmation before sending
+                </Typography>
+
+                <Box display="flex" alignItems="center" justifyContent="end">
+                  <Button
+                    contained
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    size="large"
+                    className={classes.button}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    color="success"
+                    onClick={handleReset}
+                    size="large"
+                    className={classes.button}
+                  >
+                    Send Message
+                  </Button>
+                </Box>
+              </div>
+            ) : (
+              <div>
+                <Typography className={classes.instructions}>
+                  {getStepContent(activeStep)}
+                </Typography>
+                <Box display="flex" alignItems="center" justifyContent="end">
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    size="large"
+                    className={classes.button}
+                  >
+                    Back
+                  </Button>
+
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleSkip}
+                    onClick={handleNext}
+                    size="large"
                     className={classes.button}
                   >
-                    Skip
+                    {activeStep === steps.length - 1 ? "Send" : "Next"}
                   </Button>
-                )}
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  className={classes.button}
-                >
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
+                </Box>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </Box>
+        </Paper>
       </div>
     </>
   );
